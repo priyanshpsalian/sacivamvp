@@ -1,6 +1,7 @@
 // Import necessary modules and components
 import Image from 'next/image';
 import React from 'react';
+import Link from 'next/link';
 
 // Define the Page component
 const Page: React.FC = () => {
@@ -15,9 +16,11 @@ const Page: React.FC = () => {
           <p className="text-md mb-4 text-gray-600">
             The Only <span className="font-bold text-purple-600">&lt;Package&gt;</span> you ever need till you graduate and beyond!
           </p>
+          <Link href="/auth/signup">
           <button className="bg-purple-600 text-white py-2 px-6 rounded-full font-semibold transition duration-300 hover:bg-purple-700">
             Join the Network for Free
           </button>
+          </Link>
         </header>
 
         <p className="text-center text-md mb-10 text-gray-600">
