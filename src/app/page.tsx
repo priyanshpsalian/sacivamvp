@@ -1,14 +1,14 @@
 // Import necessary modules and components
 import Image from 'next/image';
-import React from 'react';
 import Link from 'next/link';
+import React from 'react';
 
 // Define the Page component
 const Page: React.FC = () => {
   return (
     <div className="flex flex-col items-center justify-center bg-gray-50 ">
       {/* Main container */}
-      <div className="bg-white shadow-xl rounded-lg p-8 w-full">
+      <div className="bg-white shadow-xl  w-full">
         {/* Header section */}
         <header className="text-center mb-8">
           <h1 className="text-5xl font-extrabold mb-2 text-gray-900">SACIVA</h1>
@@ -26,41 +26,42 @@ const Page: React.FC = () => {
         <p className="text-center text-md mb-10 text-gray-600">
           One platform to find roommates, housing, network and more as an International Student in the USA.
         </p>
-        
+        <div className='px-8'>
         {/* Feature cards */}
         <div id="features" className="flex flex-col md:flex-row justify-between mb-12 gap-4">
-          <div className="border border-purple-600 rounded-lg p-6 text-center flex flex-col items-center hover:shadow-lg transition duration-300">
-            <Image 
-              src="https://s3-alpha-sig.figma.com/img/8e21/492b/6ccb2190b581149a881f14aaac46adc8?Expires=1722211200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=U4GsYoO~MF~7dmmtZ9HfEQFPIIwAdmub21AG9VOtNUxDD4yMMzc0gnTQ5j2WJZmQC-uItvquOJR3gMju9tUODcHOrJSfDLeIaWYff~abCcX7PB44ZrmpxtQran0Z5PNahFYR8DUMIqA0-f0tkOrZrubdvLJYUuh9zUocqx~pwrcmY0IRlX9zzgDgYSg0aiOliwzfg8mnFZ8tW0odS0YPhBpa5SferfGVotguGgNsRz2pBPYtVyiJz6kKlPz6kTDUiDE0ijaFgwlrKzRyi~xBSSbIjUJjOTyy7tsKa~U-9ih2tWOeCQshzQDopGvENhIQwAsfzYQOlyLDmXRnq0BspA__" 
-              alt="Network" 
-              width={100} 
-              height={100} 
-              className="mb-4" 
-            />
-            <h3 className="font-bold text-lg text-gray-900">Network</h3>
-            <p className="text-sm text-gray-600">A Global Network of Students Only</p>
-          </div>
-          <div className="border border-purple-600 rounded-lg p-6 text-center flex flex-col items-center hover:shadow-lg transition duration-300">
-            <Image 
-              src="https://s3-alpha-sig.figma.com/img/af3a/920b/78015185d33134e625313908e60283b8?Expires=1722211200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=k8~iUkxOeqNURZCHRNvB7uHeaDGGnWDWBsNCs2F7b-xlFIAfZKaGOQ2d9UaGgTlpxQk4fD8kmtavb~RM3uBcfLz-LZF7iPYWaCZCFjpjVNC2gHSev~DYQGgkvr330Pg3fYQ4m1GMRVEZ~vH2Er7Njen50-eGk-eqKq4zxAcANdZOaPvzzdlXG~cyeWBJ2-W04SSdHXMrXEQByJGI-teMgsaBSpF~XnzKxaUBT2tqbZoPfS0M0OlW00eEuMhOQG8-Aerm1Hg3Tn7rdYUmxRHbbGSC4dtIuA9sFYkK22TVJp8lKloEQtzJrRYYS7EXIKwtdZz66MYQrfWlCIMSyHE1tg__" 
-              alt="Safety" 
-              width={100} 
-              height={100} 
-              className="mb-4" 
-            />
-            <h3 className="font-bold text-lg text-gray-900">Safety</h3>
-            <p className="text-sm text-gray-600">Encrypted Security & Privacy</p>
-          </div>
-          <div className="border border-purple-600 rounded-lg p-6 text-center flex flex-col items-center hover:shadow-lg transition duration-300">
-            <Image 
-              src="https://s3-alpha-sig.figma.com/img/320b/7287/d6a0c0fc623a490704ef4e40ee3802a9?Expires=1722211200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=po4LqjD4nRwcH-2myXqJi~ub1WGHq4VJh15IVFO-WQiQlO8NGPA-TNHp0Z2z9W1C1sa-00V6nzMXwkp8-TVIkrglIVSywL22zoMBzDdJos69w5Z-7iYoBaPdMvv7WCAdpeSHmgYJogDMwpzwg0lrcm22MX0vXQI~or~gLuG83Q6TzpIH8KbCXvNgExBR21tZbIDoPZJFcCOPbY020g0KkJTGquDXc8oo2ww0g4US4JX3OJALFrfJRdFzYPm6kG0pYvtCeJ2A7fWSeQ5hWEEOewApqzVsI~8ewBD1gveWMSJ5I9F0nfDqC1qJDzYJ-McHDNVCqYjr8WoQeQAcsc4suw__" 
-              alt="Convenience" 
-              width={100} 
-              height={100} 
-              className="mb-4" 
-            />
-            <h3 className="font-bold text-lg text-gray-900">Convenience</h3>
-            <p className="text-sm text-gray-600">ChatGPT-based assistant, Automated Matching & Search</p>
+            <div className="border border-purple-600 rounded-lg p-6 text-center flex flex-col items-center hover:shadow-lg transition duration-300 w-full md:w-1/3 max-w-xs mx-auto md:mx-0">
+              <Image 
+                src="/output-onlinegiftools (1).gif" 
+                alt="Network" 
+                width={400} 
+                height={400} 
+                className="mb-4 h-[10rem] object-cover" 
+              />
+              <h3 className="font-bold text-lg text-gray-900">Network</h3>
+              <p className="text-sm text-gray-600">A Global Network of Students Only</p>
+            </div>
+            <div className="border border-purple-600 rounded-lg p-6 text-center flex flex-col items-center hover:shadow-lg transition duration-300 w-full md:w-1/3 max-w-xs mx-auto md:mx-0">
+              <Image 
+                src="https://s3-alpha-sig.figma.com/img/af3a/920b/78015185d33134e625313908e60283b8?Expires=1722211200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=k8~iUkxOeqNURZCHRNvB7uHeaDGGnWDWBsNCs2F7b-xlFIAfZKaGOQ2d9UaGgTlpxQk4fD8kmtavb~RM3uBcfLz-LZF7iPYWaCZCFjpjVNC2gHSev~DYQGgkvr330Pg3fYQ4m1GMRVEZ~vH2Er7Njen50-eGk-eqKq4zxAcANdZOaPvzzdlXG~cyeWBJ2-W04SSdHXMrXEQByJGI-teMgsaBSpF~XnzKxaUBT2tqbZoPfS0M0OlW00eEuMhOQG8-Aerm1Hg3Tn7rdYUmxRHbbGSC4dtIuA9sFYkK22TVJp8lKloEQtzJrRYYS7EXIKwtdZz66MYQrfWlCIMSyHE1tg__" 
+                alt="Safety" 
+                width={100} 
+                height={100} 
+                className="mb-4 h-[10rem] object-cover" 
+              />
+              <h3 className="font-bold text-lg text-gray-900">Safety</h3>
+              <p className="text-sm text-gray-600">Encrypted Security & Privacy</p>
+            </div>
+            <div className="border border-purple-600 rounded-lg p-6 text-center flex flex-col items-center hover:shadow-lg transition duration-300 w-full md:w-1/3 max-w-xs mx-auto md:mx-0">
+              <Image 
+                src="https://s3-alpha-sig.figma.com/img/320b/7287/d6a0c0fc623a490704ef4e40ee3802a9?Expires=1722211200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=po4LqjD4nRwcH-2myXqJi~ub1WGHq4VJh15IVFO-WQiQlO8NGPA-TNHp0Z2z9W1C1sa-00V6nzMXwkp8-TVIkrglIVSywL22zoMBzDdJos69w5Z-7iYoBaPdMvv7WCAdpeSHmgYJogDMwpzwg0lrcm22MX0vXQI~or~gLuG83Q6TzpIH8KbCXvNgExBR21tZbIDoPZJFcCOPbY020g0KkJTGquDXc8oo2ww0g4US4JX3OJALFrfJRdFzYPm6kG0pYvtCeJ2A7fWSeQ5hWEEOewApqzVsI~8ewBD1gveWMSJ5I9F0nfDqC1qJDzYJ-McHDNVCqYjr8WoQeQAcsc4suw__" 
+                alt="Convenience" 
+                width={100} 
+                height={100} 
+                className="mb-4 h-[10rem] object-cover" 
+              />
+              <h3 className="font-bold text-lg text-gray-900">Convenience</h3>
+              <p className="text-sm text-gray-600">ChatGPT-based assistant, Automated Matching & Search</p>
+            </div>
           </div>
         </div>
 
@@ -75,9 +76,9 @@ const Page: React.FC = () => {
         </div>
 
         {/* Additional section */}
-        <div id="testimonials" className="bg-gray-800 text-white p-8 rounded-lg w-full mx-auto text-center mt-10">
+        <div id="testimonials" className="bg-gray-800 text-white p-8  w-full text-center mt-10 relative">
           <h2 style={{ color: '#9747FF' }} className="text-3xl font-bold mb-6">
-            Forget the frustrating social media groups, join Saciva
+            FORGET THE FRUSTRATING SOCIAL MEDIA GROUPS, JOIN SACIVA
           </h2>
           <div className="flex flex-col md:flex-row justify-around mb-10 space-y-4 md:space-y-0 md:space-x-4">
             <div className="border border-purple-600 rounded-lg p-6 text-center bg-black text-white flex flex-col items-center hover:shadow-lg transition duration-300">
