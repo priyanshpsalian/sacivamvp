@@ -34,7 +34,7 @@ function Page() { // Rename the function to start with an uppercase letter
 
             if (response) {
                 toast.success("Verify Done");
-                Router.push("/buffer");
+                Router.push(`/userprofile/${userMail}`);
             }
 
         } catch (error) {

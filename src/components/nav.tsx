@@ -1,12 +1,14 @@
 'use client'
 
 import { Menu, X } from 'lucide-react'
-import React from 'react'
+import React, { useState } from 'react'
+import 'react-responsive-modal/styles.css';
+import { Modal } from 'react-responsive-modal';
 
 const menuItems = [
   {
     name: 'Home',
-    href: '#',
+    href: '/',
   },
   {
     name: 'About',
@@ -20,6 +22,10 @@ const menuItems = [
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false)
+  const [open, setOpen] = useState(false);
+
+  const onOpenModal = () => setOpen(true);
+  const onCloseModal = () => setOpen(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
@@ -28,7 +34,7 @@ export default function Navbar() {
   return (
     <div className="relative w-full bg-white">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 sm:px-6 lg:px-8">
-        <div className="inline-flex items-center space-x-2"> 
+        <div className="inline-flex items-center space-x-2">
           <span className="font-bold">SACIVA</span>
         </div>
         <div className="hidden lg:block">
@@ -47,11 +53,15 @@ export default function Navbar() {
         </div>
         <div className="hidden lg:block">
           <button
+            onClick={onOpenModal}
             type="button"
             className="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
           >
             LOGIN
           </button>
+          <Modal open={open} onClose={onCloseModal} center>
+            <h2>Simple centered modal</h2>
+          </Modal>
         </div>
         <div className="lg:hidden">
           <Menu onClick={toggleMenu} className="h-6 w-6 cursor-pointer" />
@@ -91,11 +101,15 @@ export default function Navbar() {
                   </nav>
                 </div>
                 <button
+                  onClick={onOpenModal}
                   type="button"
                   className="mt-4 w-full rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
                 >
-                  Button text
+                  Log In
                 </button>
+                <Modal open={open} onClose={onCloseModal} center>
+                  <h2>Simple centered modal</h2>
+                </Modal>
               </div>
             </div>
           </div>
