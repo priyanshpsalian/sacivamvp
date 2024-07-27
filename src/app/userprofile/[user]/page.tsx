@@ -14,7 +14,7 @@ function Page() {
   const [major, setMajor] = useState('');
   const [country, setCountry] = useState('');
   const [gender, setGender] = useState('Male');
-  const [image, setImage] = useState('https://nextjs.org/_next/image?url=https%3A%2F%2Fwww.datocms-assets.com%2F35255%2F1665059775-delba.jpg&w=640&q=75');
+  const [image, setImage] = useState('https://img.freepik.com/premium-photo/blue-pink-mesh-gradient-banner-background-wallpaper-website-template-landing-page-web-frame-text_685444-38.jpg');
   const [imagelink, setImageLink] = useState('');
   const param = useParams();
   const Router = useRouter();
