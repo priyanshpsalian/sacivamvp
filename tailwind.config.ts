@@ -8,10 +8,15 @@ const config: Config = {
   ],
   theme: {
     extend: {
-       keyframes: {
+      colors: {
+        indigoCustom: '#4B0082',
+        'royal-purple': '#8A59AE',
+        lavender: '#A580C0',
+      },
+      keyframes: {
         "caret-blink": {
-          "0%,70%,100%": { opacity: "1" },
-          "20%,50%": { opacity: "0" },
+          "0%, 70%, 100%": { opacity: "1" },
+          "20%, 50%": { opacity: "0" },
         },
       },
       animation: {
@@ -26,4 +31,5 @@ const config: Config = {
   },
   plugins: [],
 };
+
 export default config;
