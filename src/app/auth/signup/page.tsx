@@ -101,7 +101,7 @@ export default function SignUp() {
                                     ></input>
                                 </div>
                             </div>
-                             <div>
+                            <div>
                                 <div className="flex items-center justify-between">
                                     <label htmlFor="password" className="text-base font-medium text-indigoCustom">
                                         {' '}
