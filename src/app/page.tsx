@@ -1,10 +1,10 @@
 // Import necessary modules and components
 "use client"
 import Image from 'next/image';
-import Link from 'next/link';
-import React,{useState} from 'react';
-import 'react-responsive-modal/styles.css';
+import React, { useState } from 'react';
 import { Modal } from 'react-responsive-modal';
+import 'react-responsive-modal/styles.css';
+import { FooterTwo } from './../components/Footer/footer';
 import SignUp from './auth/signup/page';
 
 // Define the Page component
@@ -18,8 +18,10 @@ const Page: React.FC = () => {
       {/* Main container */}
       <div className="bg-white shadow-xl  w-full">
         {/* Header section */}
-        <header className="text-center mb-8">
-          <h1 className="text-5xl font-extrabold mb-2 text-gray-900">SACIVA</h1>
+        {/* <header className="text-center mb-8">
+          <h1 className="text-5xl font-extrabold mb-2 text-gray-900">SACIVA</h1> */}
+          <header className="text-center mb-8">
+          <video src="/838eb867-a83f-427f-89e3-1463d19e11f4 (1).mp4" autoPlay loop muted className="mx-auto mb-8" width="400"></video>
           <p className="text-xl text-gray-700">For Students By Students</p>
           <p className="text-md mb-4 text-gray-600">
             The Only <span className="font-bold text-purple-600">&lt;Package&gt;</span> you ever need till you graduate and beyond!
@@ -143,6 +145,7 @@ const Page: React.FC = () => {
           </button>
         </div>
       </div>
+      <FooterTwo/>
     </div>
   );
 };

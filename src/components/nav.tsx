@@ -1,9 +1,10 @@
 'use client'
 
-import { Menu, X } from 'lucide-react'
-import React, { useState } from 'react'
-import 'react-responsive-modal/styles.css';
+import { Menu, X } from 'lucide-react';
+import Image from 'next/image';
+import React, { useState } from 'react';
 import { Modal } from 'react-responsive-modal';
+import 'react-responsive-modal/styles.css';
 
 const menuItems = [
   {
@@ -18,27 +19,33 @@ const menuItems = [
     name: 'Contact',
     href: '#',
   },
-]
+];
 
 export default function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = React.useState(false)
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const [open, setOpen] = useState(false);
 
   const onOpenModal = () => setOpen(true);
   const onCloseModal = () => setOpen(false);
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen)
-  }
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   return (
     <div className="relative w-full bg-white">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 sm:px-6 lg:px-8">
         <div className="inline-flex items-center space-x-2">
+          <Image
+            src="https://s3-alpha-sig.figma.com/img/5140/0019/b270f49a57e064d6b1941a20be76eec0?Expires=1723420800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Q6qGoD9RjNpGfITRipVbF62LJ43cCjm0DQUVatP~uDIYkD2w16Upwjl-kopvuhN2DjQ8KHDG6Wnh3MTax-4hswadHElyyuiEY4LaKqhyy0Fds~AtAFvo-b~21zNjPuJptEHXGhxNhMi1qUjgnLPVXQ9t3ZPuFZhdh82Xz0M9J8fHi1AQH-tGShmlZMP-5PyXbH1lonT6ExlSoMC3l7yN844kNdjZdG8Djyy1mCMox8l5Cd5vvSqFlo3grept4-QU1CmbfDMR4dMT7~DW5ln-ucPAd-LQYsU1wztNst9wmAM9XTgOORWCMY9t85eBg6R4praEIMHKnu9iLQ7kaZ0OfQ__"
+            alt="SACIVA Logo"
+            width={40}
+            height={40}
+          />
           <span className="font-bold">SACIVA</span>
         </div>
-        <div className="hidden lg:block">
-          <ul className="inline-flex space-x-8">
+        <div className="flex-grow flex justify-center">
+          <ul className="inline-flex space-x-8 -ml-16"> {/* Changed ml-6 to -ml-16 to move it more to the left */}
             {menuItems.map((item) => (
               <li key={item.name}>
                 <a
@@ -49,16 +56,9 @@ export default function Navbar() {
                 </a>
               </li>
             ))}
-          </ul>
+          </ul> {/* Corrected the closing tag here */}
         </div>
         <div className="hidden lg:block">
-          <button
-            onClick={onOpenModal}
-            type="button"
-            className="rounded-md bg-black px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-          >
-            LOGIN
-          </button>
           <Modal open={open} onClose={onCloseModal} center>
             <h2>Simple centered modal</h2>
           </Modal>
@@ -116,5 +116,5 @@ export default function Navbar() {
         )}
       </div>
     </div>
-  )
+  );
 }
