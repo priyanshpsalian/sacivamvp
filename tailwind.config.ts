@@ -17,6 +17,9 @@ const config: Config = {
         'royal-purple': '#8A59AE',
         lavender: '#A580C0',
         customOrange: '#FFA500',
+        darkLavender: '#6B4D87',
+        lightYellow: '#FFFFE0',
+        lightPurple: '#D3B6E3', 
       },
       keyframes: {
         "caret-blink": {

@@ -23,6 +23,7 @@ const Page: React.FC = () => {
           <div className='flex flex-col w-full  items-center justify-center pt-8'>
           <video className='object-cover ' src="/headervideo.mp4" muted loop autoPlay></video>
           </div>
+          <br></br>
           
           {/* <p className="text-xl text-gray-700">For Students By Students</p> */}
           <p
@@ -175,6 +176,7 @@ const Page: React.FC = () => {
           </div>
         </div>
 
+<br></br>
         <p
       className="mb-8"
       style={{
