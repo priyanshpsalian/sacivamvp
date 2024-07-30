@@ -1,7 +1,7 @@
 "use client"
 
 import { ArrowRight } from 'lucide-react'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import toast, { Toaster } from "react-hot-toast";
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
@@ -11,28 +11,35 @@ export default function SignUp() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmpassword, setConfirmPassword] = useState('');
+    const [loading, setLoading] = useState(false)
+    const [disabled, setDisabled] = useState(true)
     const Router = useRouter()
-
+    useEffect(() => {
+        if (password.length > 10) {
+            setDisabled(false)
+        }
+        else {
+            setDisabled(true)
+        }
+    }, [password])
 
     async function signupUsers() {
         try {
             if (email.includes('.edu')) {
-                if(password === confirmpassword){
-
-                    const response =  await axios.post("/api/auth/signup",{
+                if (password === confirmpassword) {
+                    setLoading(true)
+                    const response = await axios.post("/api/auth/signup", {
                         email,
                         password
                     })
-                    if(response){
-                        console.log(response)
+                    if (response) {
                         setEmail(' ')
                         setPassword(' ')
                         setConfirmPassword(' ')
                     }
-                    console.log("ok")
                     Router.push(`/auth/verify/${email}`)
                 }
-                else{
+                else {
                     toast.error('Password and confirm Password should me same')
                 }
             }
@@ -97,11 +104,11 @@ export default function SignUp() {
                                         type="password"
                                         placeholder="Password"
                                         id="password"
-                                        onChange={(e)=>setPassword(e.target.value)}
+                                        onChange={(e) => setPassword(e.target.value)}
                                     ></input>
                                 </div>
                             </div>
-                             <div>
+                            <div>
                                 <div className="flex items-center justify-between">
                                     <label htmlFor="password" className="text-base font-medium text-gray-900">
                                         {' '}
@@ -114,18 +121,25 @@ export default function SignUp() {
                                         type="password"
                                         placeholder="Password"
                                         id="password"
-                                        onChange={(e)=>setConfirmPassword(e.target.value)}
+                                        onChange={(e) => setConfirmPassword(e.target.value)}
                                     ></input>
                                 </div>
                             </div>
                             <div>
-                                <button
+                                {loading ? <button
+                                    type="button"
+                                    className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80"
+                                >
+                                    Processing....
+                                </button> : <button
                                     onClick={signupUsers}
+                                    disabled={disabled}
                                     type="button"
                                     className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80"
                                 >
                                     Create Account <ArrowRight className="ml-2" size={16} />
-                                </button>
+                                </button>}
+
                             </div>
                         </div>
                     </form>

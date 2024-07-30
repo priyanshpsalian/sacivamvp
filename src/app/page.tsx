@@ -14,11 +14,14 @@ const Page: React.FC = () => {
   const onOpenModal = () => setOpen(true);
   const onCloseModal = () => setOpen(false);
   return (
-    <div className="flex flex-col items-center justify-center bg-gray-50 ">
+    <div className="flex flex-col items-center justify-center bg-[#f6f6f6] ">
       {/* Main container */}
-      <div className="bg-white shadow-xl  w-full">
+      <div className=" shadow-xl  w-full">
         {/* Header section */}
         <header className="text-center mb-8">
+          <div className='flex flex-col w-full  items-center justify-center pt-8'>
+          <video className='object-cover ' src="/headervideo.mp4" muted loop autoPlay></video>
+          </div>
           <h1 className="text-5xl font-extrabold mb-2 text-gray-900">SACIVA</h1>
           <p className="text-xl text-gray-700">For Students By Students</p>
           <p className="text-md mb-4 text-gray-600">
