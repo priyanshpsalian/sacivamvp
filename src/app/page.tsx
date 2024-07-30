@@ -1,10 +1,10 @@
 // Import necessary modules and components
 "use client"
 import Image from 'next/image';
-import Link from 'next/link';
-import React,{useState} from 'react';
-import 'react-responsive-modal/styles.css';
+import React, { useState } from 'react';
 import { Modal } from 'react-responsive-modal';
+import 'react-responsive-modal/styles.css';
+import { FooterTwo } from './../components/Footer/footer';
 import SignUp from './auth/signup/page';
 
 // Define the Page component
@@ -146,6 +146,7 @@ const Page: React.FC = () => {
           </button>
         </div>
       </div>
+      <FooterTwo/>
     </div>
   );
 };
