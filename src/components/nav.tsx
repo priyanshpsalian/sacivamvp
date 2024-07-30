@@ -1,11 +1,11 @@
 'use client'
 
+import SignUp from '@/app/auth/signup/page';
 import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
 import React, { useState } from 'react';
 import { Modal } from 'react-responsive-modal';
 import 'react-responsive-modal/styles.css';
-import SignUp from '@/app/auth/signup/page';
 
 
 export default function Navbar() {
@@ -26,10 +26,23 @@ export default function Navbar() {
           <Image
             src="https://s3-alpha-sig.figma.com/img/5140/0019/b270f49a57e064d6b1941a20be76eec0?Expires=1723420800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Q6qGoD9RjNpGfITRipVbF62LJ43cCjm0DQUVatP~uDIYkD2w16Upwjl-kopvuhN2DjQ8KHDG6Wnh3MTax-4hswadHElyyuiEY4LaKqhyy0Fds~AtAFvo-b~21zNjPuJptEHXGhxNhMi1qUjgnLPVXQ9t3ZPuFZhdh82Xz0M9J8fHi1AQH-tGShmlZMP-5PyXbH1lonT6ExlSoMC3l7yN844kNdjZdG8Djyy1mCMox8l5Cd5vvSqFlo3grept4-QU1CmbfDMR4dMT7~DW5ln-ucPAd-LQYsU1wztNst9wmAM9XTgOORWCMY9t85eBg6R4praEIMHKnu9iLQ7kaZ0OfQ__"
             alt="SACIVA Logo"
-            width={40}
-            height={40}
+            width={70}
+            height={70}
           />
-          <span className="font-bold">SACIVA</span>
+          {/* <span className="font-bold">SACIVA</span> */}
+          <span
+            style={{
+              fontFamily: 'Urbanist',
+              fontSize: '21px',
+              fontWeight: 900,
+              lineHeight: '25.2px',
+              textAlign: 'center',
+            }}
+            className="font-bold"
+          >
+            SACIVA
+          </span>
+
         </div>
         <div className="hidden lg:block">
           <button

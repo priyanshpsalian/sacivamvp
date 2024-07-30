@@ -8,10 +8,15 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        urbanist: ['Urbanist', 'sans-serif'],
+        lato: ['Lato', 'sans-serif'],
+      },
       colors: {
         indigoCustom: '#4B0082',
         'royal-purple': '#8A59AE',
         lavender: '#A580C0',
+        customOrange: '#FFA500',
       },
       keyframes: {
         "caret-blink": {

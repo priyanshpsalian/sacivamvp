@@ -6,6 +6,7 @@ import {
     InputOTPSlot,
 } from "@/components/ui/input-otp";
 import axios from 'axios';
+import Image from "next/image";
 import { useParams, useRouter } from 'next/navigation'; // Import useParams from next/navigation
 import { useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
@@ -47,7 +48,14 @@ function Page() { // Rename the function to start with an uppercase letter
             <Toaster />
             <div className='flex flex-col lg:flex-row items-center justify-center gap-16 bg-[#8A59AE]/50 p-10 rounded-lg'>
                 <div>
-                    <img className='h-[20rem]' src="https://img.freepik.com/free-vector/verified-concept-illustration_114360-5167.jpg?t=st=1722336647~exp=1722340247~hmac=a6e30fe483eaf5bad7ee2ef97113f63465bd7e09c331b06809bf665832c0d388&w=740" alt="" />
+                <Image
+                    className="h-[20rem] object-cover"
+                    src="https://img.freepik.com/free-vector/verified-concept-illustration_114360-5167.jpg?t=st=1722336647~exp=1722340247~hmac=a6e30fe483eaf5bad7ee2ef97113f63465bd7e09c331b06809bf665832c0d388&w=740"
+                    alt="Verified concept illustration"
+                    width={400}
+                    height={250}
+                />
+
                 </div>
                 <div>
                     <h1 className='text-2xl lg:text-4xl text-center pb-2'><span className='font-bold '>OTP Code </span>Verification</h1>

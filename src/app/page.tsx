@@ -1,6 +1,7 @@
 // Import necessary modules and components
 "use client"
 import Image from 'next/image';
+import Link from 'next/link';
 import React, { useState } from 'react';
 import { Modal } from 'react-responsive-modal';
 import 'react-responsive-modal/styles.css';
@@ -22,28 +23,87 @@ const Page: React.FC = () => {
           <div className='flex flex-col w-full  items-center justify-center pt-8'>
           <video className='object-cover ' src="/headervideo.mp4" muted loop autoPlay></video>
           </div>
-          <h1 className="text-5xl font-extrabold mb-2 text-gray-900">SACIVA</h1>
-          <p className="text-xl text-gray-700">For Students By Students</p>
-          <p className="text-md mb-4 text-gray-600">
-            The Only <span className="font-bold text-purple-600">&lt;Package&gt;</span> you ever need till you graduate and beyond!
+          
+          {/* <p className="text-xl text-gray-700">For Students By Students</p> */}
+          <p
+            className="text-gray-700"
+            style={{
+              fontFamily: 'Urbanist',
+              fontSize: '36px',
+              fontWeight: 400,
+              lineHeight: '43.2px',
+              textAlign: 'center',
+            }}
+          >
+            For Students By Students
+          </p>
+          <p
+            className="mb-4"
+            style={{
+              fontFamily: 'Urbanist',
+              fontSize: '36px',
+              fontWeight: 400,
+              lineHeight: '43.2px',
+              textAlign: 'center',
+              color: '#4B5563', // Equivalent to Tailwind's text-gray-600
+            }}
+          >
+            The Only{' '}
+            <span className="font-bold text-purple-600">&lt;Package&gt;</span> you
+            ever need till you graduate and beyond!
           </p>
           {/* <Link href="/auth/signup"> */}
-          <button onClick={onOpenModal} className="bg-purple-600 text-white py-2 px-6 rounded-full font-semibold transition duration-300 hover:bg-purple-700">
-            Join the Network for Free
-          </button>
+          <button
+          onClick={onOpenModal}
+          className="bg-purple-600 text-white rounded-full transition duration-300 hover:bg-purple-700"
+          style={{
+        fontFamily: 'Urbanist',
+        fontSize: '24px',
+        fontWeight: 600,
+        lineHeight: '28.8px',
+        textAlign: 'center',
+        padding: '10px 24px', // Equivalent to py-2 px-6
+      }}
+    >
+      Join the Network for Free
+    </button>
           <Modal open={open} onClose={onCloseModal} center>
         <SignUp/>
       </Modal>
           {/* </Link> */}
         </header>
 
-        <p className="text-center text-md mb-10 text-gray-600">
-          One platform to find roommates, housing, network and more as an International Student in the USA.
-        </p>
+        <p
+      className="mb-0"
+      style={{
+        fontFamily: 'Urbanist',
+        fontSize: '36px',
+        fontWeight: 400,
+        lineHeight: '43.2px',
+        textAlign: 'center',
+        color: '#4B5563', // Equivalent to Tailwind's text-gray-600
+      }}
+    >
+      One platform to find roommates, housing, network and more
+      
+    </p>
+    <p
+      className="mb-10"
+      style={{
+        fontFamily: 'Urbanist',
+        fontSize: '36px',
+        fontWeight: 400,
+        lineHeight: '43.2px',
+        textAlign: 'center',
+        color: '#4B5563', // Equivalent to Tailwind's text-gray-600
+      }}
+    >
+      as an International Student in the USA.
+    </p>
         <div className='px-8'>
         {/* Feature cards */}
-        <div id="features" className="flex flex-col md:flex-row justify-between mb-12 gap-4">
-            <div className="border border-purple-600 rounded-lg p-6 text-center flex flex-col items-center hover:shadow-lg transition duration-300 w-full md:w-1/3 max-w-xs mx-auto md:mx-0">
+        <div id="features" className="flex flex-col md:flex-row justify-between gap-0 p-0 m-0">
+        <div className="border border-purple-600 rounded-lg p-6 text-center flex flex-col items-center hover:shadow-lg transition duration-300 w-full md:w-1/3 max-w-xs mx-auto md:mx-0">
               <Image 
                 src="/output-onlinegiftools (1).gif" 
                 alt="Network" 
@@ -51,7 +111,19 @@ const Page: React.FC = () => {
                 height={400} 
                 className="mb-4 h-[10rem] object-cover" 
               />
-              <h3 className="font-bold text-lg text-gray-900">Network</h3>
+              <h3
+                className="mb-4 p-4 rounded"
+                style={{
+                  fontFamily: 'Urbanist',
+                  fontSize: '36px',
+                  fontWeight: 700,
+                  lineHeight: '43.2px',
+                  textAlign: 'center',
+                  color: '#4B00828C', // Set text color to white for contrast
+                }}
+              >
+                Network
+              </h3>
               <p className="text-sm text-gray-600">A Global Network of Students Only</p>
             </div>
             <div className="border border-purple-600 rounded-lg p-6 text-center flex flex-col items-center hover:shadow-lg transition duration-300 w-full md:w-1/3 max-w-xs mx-auto md:mx-0">
@@ -62,7 +134,19 @@ const Page: React.FC = () => {
                 height={100} 
                 className="mb-4 h-[10rem] object-cover" 
               />
-              <h3 className="font-bold text-lg text-gray-900">Safety</h3>
+              <h3
+                className="mb-4 p-4 rounded"
+                style={{
+                  fontFamily: 'Urbanist',
+                  fontSize: '36px',
+                  fontWeight: 700,
+                  lineHeight: '43.2px',
+                  textAlign: 'center',
+                  color: '#4B00828C', // Set text color to white for contrast
+                }}
+              >
+                Safety
+              </h3>
               <p className="text-sm text-gray-600">Encrypted Security & Privacy</p>
             </div>
             <div className="border border-purple-600 rounded-lg p-6 text-center flex flex-col items-center hover:shadow-lg transition duration-300 w-full md:w-1/3 max-w-xs mx-auto md:mx-0">
@@ -73,80 +157,232 @@ const Page: React.FC = () => {
                 height={100} 
                 className="mb-4 h-[10rem] object-cover" 
               />
-              <h3 className="font-bold text-lg text-gray-900">Convenience</h3>
+              <h3
+                className="mb-4 p-4 rounded"
+                style={{
+                  fontFamily: 'Urbanist',
+                  fontSize: '36px',
+                  fontWeight: 700,
+                  lineHeight: '43.2px',
+                  textAlign: 'center',
+                  color: '#4B00828C', // Set text color to white for contrast
+                }}
+              >
+                Convenience
+              </h3>
               <p className="text-sm text-gray-600">ChatGPT-based assistant, Automated Matching & Search</p>
             </div>
           </div>
         </div>
 
-        <p className="text-center text-md text-gray-600 mb-8">
-          We are You. As international students, we know the exact challenges you face and we are building a personalized one-stop solution. Saciva has everything you need to succeed. Join us today and start your journey to success.
-        </p>
+        <p
+      className="mb-8"
+      style={{
+        fontFamily: 'Urbanist',
+        fontSize: '24px',
+        fontWeight: 400,
+        lineHeight: '28.8px',
+        textAlign: 'center',
+        color: '#4B5563', // Gray color similar to text-gray-600 in Tailwind CSS
+      }}
+    >
+      We are You. As international students, we know the exact challenges you face and we are building a personalized one-stop solution. Saciva has everything you need to succeed. Join us today and start your journey to success.
+    </p>
         
-        <div className="text-center mb-8">
-          <button className="bg-blue-600 text-white py-2 px-6 rounded-full font-semibold transition duration-300 hover:bg-blue-700 mb-4">
-            Join the Network for Free
-          </button>
-        </div>
+        <div className="flex justify-center">
+      <Link href="#" passHref>
+        <span
+          className="text-blue-600 py-3 px-6 rounded-full font-semibold transition duration-300 mb-6 cursor-pointer"
+          style={{
+            fontFamily: 'Lato',
+            fontSize: '18px', // Reduced font size
+            fontWeight: 600,
+            lineHeight: '22px', // Adjusted line height to match the new font size
+            textAlign: 'center',
+          }}
+          onClick={(e) => e.preventDefault()}
+        >
+          Join the Network for Free
+        </span>
+      </Link>
+    </div>
 
         {/* Additional section */}
-        <div id="testimonials" className="bg-gray-800 text-white p-8  w-full text-center mt-10 relative">
-          <h2 style={{ color: '#9747FF' }} className="text-3xl font-bold mb-6">
-            FORGET THE FRUSTRATING SOCIAL MEDIA GROUPS, JOIN SACIVA
-          </h2>
-          <div className="flex flex-col md:flex-row justify-around mb-10 space-y-4 md:space-y-0 md:space-x-4">
-            <div className="border border-purple-600 rounded-lg p-6 text-center bg-black text-white flex flex-col items-center hover:shadow-lg transition duration-300">
-              <Image 
-                src="https://s3-alpha-sig.figma.com/img/64bc/66a3/242164346bb265da9e0ecb274c6ef6c8?Expires=1722211200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=lAB7VFgWeVOvcrsFZuMwSJS2pVEGX6kKlSM~VUqtnQjJlvI03RmRk3L4aPz~CU3asXS6yHiBTcxWiURtYAynouBGmsi-gdE-hX5qKVwvBq5ZxrlbyKNRBDLwEGx4hMcoLgQjPirWJVXGbSnMb9rwl48oNkpJNnCcR7dhd1XdH2yOwVvqkSvTcN~J2AFn3YcQubCmp~iLm6jQeh6rpLGfsK~tnUe5mXYoKVB3t3XMdlEtcLXVA5j1qfs-OxtMe-LWYJeuAr6xFbCr2X6X0mgzCAxEthupFZnx21YD9Gk9YTn0BihRtCi9DGHQD6QPmtZkuHfyAfo7-PfD7Be~LUASKg__" 
-                alt="No Fake Accounts" 
-                width={100} 
-                height={100} 
-                className="mb-4" 
-              />
-              <p className="font-bold text-lg">No Fake Accounts</p>
-              <p className="text-sm mt-2">We have a rigorous verification process to ensure that only genuine students are part of our network.</p>
-            </div>
-            <div className="border border-purple-600 rounded-lg p-6 text-center bg-black text-white flex flex-col items-center hover:shadow-lg transition duration-300">
-              <Image 
-                src="https://s3-alpha-sig.figma.com/img/cd02/0042/f2a8f484e9a2a57ba44fe24e1dad6d9f?Expires=1722211200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=O9QlJOt8hqXFcCb~jqmXRoCphy1LzZkXPoMz6mdmZyasiRcIDq0QJTiofgCbgSCjf3j1dC4A1NSIT1tLY6JXqEOPss7qe7IO66ZjwDOFG12bbobpHLQtNSiQEjgjw2pjUYWGLvrS9Jogy~0n7zvg6DwtsDW8He~XAzhlUU2tiTWFoexT-vFc2N-rzbUvyGYS4qSwVhtNThsy4SeQn5tFyRpZjV0mMskfN5BzmpW5KmVcjCDcKf-15LBOsB3yLOJudmvoelpsIWPnLpRR4TSedKJ~5EyKX6-mcV94WWeoPyK8BpknD5~LpdSq43yLvfojeM-hgXPivmSN5fRT88d20g__" 
-                alt="No More Spam" 
-                width={100} 
-                height={100} 
-                className="mb-4" 
-              />
-              <p className="font-bold text-lg">No More Spam</p>
-              <p className="text-sm mt-2">We have a strict policy against spam and unwanted messages, ensuring a clean and productive environment.</p>
-            </div>
-            <div className="border border-purple-600 rounded-lg p-6 text-center bg-black text-white flex flex-col items-center hover:shadow-lg transition duration-300">
-              <Image 
-                src="https://s3-alpha-sig.figma.com/img/432c/2891/4da943f66bd613509b44465ccea003b0?Expires=1722211200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=AkEOx1bFfHryQXJGBZL3JHSvFuWnJddHgNuQQ6OoVSGt4X91YtAY37IfEXiknhYt9Nll5~l5bOfBHnHyg1IC8qS~ApYhYTLJjLtRC8nPTMyD3MDZKUq4LzU5MlWwNfwzr71etaYM8WiNjObuk1TQaHVLpmkOO5~GZ8~ilMupq1-dY9Khhcd-NyoCMS-ZN-vgEqreSPfT86cOw7UrKh0ziRCzfQHNdjf7vuF-v1Np1~jmzPHbJpLnLr82itP0ubSJeOcJo0I~3-AdO3JTG8m3cpLqWf3KZIk56fQ9qOD8RJAguJkNiE4T0uL7qcwl5N~yGoxBaUbvgROS2W86aBiSOQ__" 
-                alt="No Privacy Issues" 
-                width={100} 
-                height={100} 
-                className="mb-4" 
-              />
-              <p className="font-bold text-lg">No Privacy Issues</p>
-              <p className="text-sm mt-2">We prioritize your privacy and security. Your data is encrypted and never shared without your consent.</p>
-            </div>
+        <div id="testimonials" style={{ background: '#0A0A0A' }} className="text-white p-8 w-full text-center mt-10 relative">
+      <h2 style={{ color: '#9747FF' }} className="text-3xl font-bold mb-6">
+        FORGET THE FRUSTRATING SOCIAL MEDIA GROUPS, JOIN SACIVA
+      </h2>
+      <br></br>
+      <br>
+      </br>
+      <br></br>
+      <div className="flex flex-col md:flex-row justify-around mb-10 space-y-4 md:space-y-0 md:space-x-4">
+        <div
+          className="border border-purple-600 rounded-lg p-6 text-center text-white flex flex-col items-center hover:shadow-lg transition duration-300"
+          style={{
+            background: '#181818',
+            width: '330px',
+            height: '450px',
+            borderRadius: '20px 0 0 0',
+          }}
+        >
+          <Image
+            src="https://d3l4smlx4vuygm.cloudfront.net/1.png"
+            alt="No Fake Accounts"
+            width={180}
+            height={180}
+            className="mb-4"
+          />
+
+          <p className="font-urbanist text-2xl font-extrabold leading-tight text-right text-lavender p-4 rounded-lg">
+            No Fake Accounts
+          </p>
+          <p className="font-lato text-base font-normal leading-tight text-left">
+            No imposters who send the same unwanted Ad 100 times on the social media groups.</p>
+            <br></br>
+            <p className="font-lato text-base font-normal leading-tight text-left">
+            No more Pesky Ads in DM that are frustrating and annoying.
+          </p>
           </div>
-          <button className="bg-blue-600 text-white py-3 px-6 rounded-full font-semibold transition duration-300 hover:bg-blue-700 mb-6">
-            Join the Network for Free
-          </button>
-          <p className="text-sm mb-6">
-            We are You. We are international students! We get it! Our blog is more relatable to your journey with stories and useful tips. Saciva has been built for our community. We appreciate your feedback and suggestions.
+          <div
+          className="border border-purple-600 rounded-lg p-6 text-center text-white flex flex-col items-center hover:shadow-lg transition duration-300"
+          style={{
+            background: '#181818',
+            width: '330px',
+            height: '450px',
+            borderRadius: '20px 0 0 0',
+          }}
+        >
+          <Image
+            src="https://d3l4smlx4vuygm.cloudfront.net/2.png"
+            alt="No More Spam"
+            width={180}
+            height={180}
+            className="mb-4"
+          />
+          
+          <p className="font-urbanist text-2xl font-extrabold leading-tight text-right text-lavender p-4 rounded-lg">
+            No More Spam
           </p>
-          <button className="bg-red-600 text-white py-3 px-6 rounded-full font-semibold transition duration-300 hover:bg-red-700 mb-6">
-            Support Us
-          </button>
-          <p className="text-sm mb-6">
-            We are offering the platform for free for now; it costs us an immense amount of time and effort to keep this running. Help us regularly update our generous support to make this platform better for students.
+          <p className="font-lato text-base font-normal leading-tight text-left">Don’t loose your precious time in spam filled social media groups</p>
+          <br></br>
+          <p className="font-lato text-base font-normal leading-tight text-left">Forget infinite scrolling in those muted group chats filled with irrelevant texts</p>
+        </div>
+        <div
+          className="border border-purple-600 rounded-lg p-6 text-center text-white flex flex-col items-center hover:shadow-lg transition duration-300"
+          style={{
+            background: '#181818',
+            width: '330px',
+            height: '450px',
+            borderRadius: '20px 0 0 0',
+          }}
+        >
+          <Image
+            src="https://d3l4smlx4vuygm.cloudfront.net/3.png"
+            alt="No Privacy Issues"
+            width={180}
+            height={180}
+            className="mb-4"
+          />
+          
+          <p className="font-urbanist text-2xl font-extrabold leading-tight text-right text-lavender p-4 rounded-lg">
+          No Privacy Issues
           </p>
-          <button className="bg-green-600 text-white py-3 px-6 rounded-full font-semibold transition duration-300 hover:bg-green-700">
-            Share With Friends
-          </button>
+          <p className="font-lato text-base font-normal leading-tight text-left">Hey girl !! Yes you ! Take charge of your DM. Choose who can text  you</p>
+          <br></br>
+          <p className="font-lato text-base font-normal leading-tight text-left">No more stress of blocking creepy freaks from the public groups that bother you in DM</p>
         </div>
       </div>
+      <Link href="#" passHref>
+      <span
+        className="text-blue-600 py-3 px-6 rounded-full font-semibold transition duration-300 mb-6 cursor-pointer"
+        style={{
+          fontFamily: 'Lato',
+          fontSize: '24px',
+          fontWeight: 600,
+          lineHeight: '28.8px',
+          textAlign: 'center',
+        }}
+        onClick={(e) => e.preventDefault()}
+      >
+        Join the Network for Free
+      </span>
+      <br></br>
+      <br></br>
+      <br></br>
+    </Link>
+    <p
+      className="mb-6"
+      style={{
+        fontFamily: 'Urbanist',
+        fontSize: '24px',
+        fontWeight: 400,
+        lineHeight: '28.8px',
+        textAlign: 'center',
+      }}
+    >
+      We are You. We are international students. Visit our blog to know more about how our journey with Saciva started. At Saciva, we believe in the power of community, we appreciate your Feedback and Suggestions
+    </p>
+      <div
+      className="text-[#FF2929] font-semibold"
+      style={{
+        fontFamily: 'Lato',
+        fontSize: '16px', // Smaller font size
+        fontWeight: 600,
+        lineHeight: '19.2px', // Adjusted line height to match the smaller font size
+        textAlign: 'center',
+      }}
+    >
+      Our Story  
+    </div>
+    <br></br>
+    <br></br>
+    
+    <p
+      className="mb-6"
+      style={{
+        fontFamily: 'Urbanist',
+        fontSize: '24px',
+        fontWeight: 400,
+        lineHeight: '28.8px',
+        textAlign: 'center',
+      }}
+    >
+      While we are offering the platform for free for now, it costs us our money, time, and effort to keep this running. We highly appreciate your generous support to make this platform more robust and featuresome!
+    </p>
+      <button className="bg-[#FF2929] text-white py-3 px-6 rounded-full font-semibold transition duration-300">
+        support us 
+      </button>
+      <br></br>
+      <br></br>
+      <br></br>
+      <p
+      className="mb-6"
+      style={{
+        fontFamily: 'Urbanist',
+        fontSize: '24px',
+        fontWeight: 400,
+        lineHeight: '28.8px',
+        textAlign: 'center',
+      }}
+    >
+      You can also support us through spreading a word about Saciva, amongst your friends, neighbors, colleagues,  classmates and roommates or anyone who is a student, especially international students. Thanks :)
+    </p>
+    <div
+      className="text-[#FF2929] font-semibold"
+      style={{
+        fontFamily: 'Lato',
+        fontSize: '16px', // Smaller font size
+        fontWeight: 600,
+        lineHeight: '19.2px', // Adjusted line height to match the smaller font size
+        textAlign: 'center',
+      }}
+    >
+      ^ Share With Friends ^
+    </div>
+    </div>
       <FooterTwo/>
+    </div>
     </div>
   );
 };
