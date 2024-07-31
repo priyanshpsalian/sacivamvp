@@ -9,8 +9,8 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        urbanist: ['Urbanist', 'sans-serif'],
-        lato: ['Lato', 'sans-serif'],
+        urbanist: ['Urbanist'],
+        lato: ['Lato'],
       },
       colors: {
         indigoCustom: '#4B0082',
