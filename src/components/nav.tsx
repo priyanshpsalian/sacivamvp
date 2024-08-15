@@ -6,6 +6,7 @@ import Image from 'next/image';
 import React, { useState } from 'react';
 import { Modal } from 'react-responsive-modal';
 import 'react-responsive-modal/styles.css';
+import Link from 'next/link';
 
 
 export default function Navbar() {
@@ -45,16 +46,14 @@ export default function Navbar() {
 
         </div>
         <div className="hidden lg:block">
+          <Link href="/login">
           <button
-            onClick={onOpenModal}
             type="button"
             className="mt-4 w-full rounded-md bg-purple-600 px-3 py-2 text-sm font-semibold text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-          >
+            >
             Log In
           </button>
-          <Modal open={open} onClose={onCloseModal} center>
-            <SignUp/>
-          </Modal>
+            </Link>
         </div>
         <div className="lg:hidden">
           <Menu onClick={toggleMenu} className="h-6 w-6 cursor-pointer" />
@@ -78,16 +77,18 @@ export default function Navbar() {
                     </button>
                   </div>
                 </div>
+                <Link href="/login">
                 <button
-                  onClick={onOpenModal}
+                  // onClick={onOpenModal}
                   type="button"
                   className="mt-4 w-full rounded-md bg-purple-600 px-3 py-2 text-sm font-semibold text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-                >
+                  >
                   Log In
                 </button>
-                <Modal open={open} onClose={onCloseModal} center>
+                  </Link>
+                {/* <Modal open={open} onClose={onCloseModal} center>
                   <SignUp/>
-                </Modal>
+                </Modal> */}
               </div>
             </div>
           </div>

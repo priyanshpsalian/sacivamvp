@@ -3,11 +3,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
-import ReactPlayer from 'react-player';
 import { Modal } from 'react-responsive-modal';
 import 'react-responsive-modal/styles.css';
 import { FooterTwo } from './../components/Footer/footer';
 import SignUp from './auth/signup/page';
+import Sacivap5js from '@/components/p5js/saciva';
 
 
 const Page: React.FC = () => {
@@ -18,15 +18,11 @@ const Page: React.FC = () => {
   return (
     <div className="flex flex-col items-center justify-center bg-[#f6f6f6] ">
       
-      <div className=" shadow-xl  w-full">
+      <div className="shadow-xl  w-full">
         
         <header className="text-center mb-8">
-          <div className='flex flex-col w-full  items-center justify-center pt-8'>
-            <ReactPlayer
-              url="/headervideo.mp4"
-              width="640"
-              height="360"
-            />
+          <div className='flex flex-col overflow-y-hidden items-center justify-center  overflow-x-hidden'>
+            <Sacivap5js/>
           </div>
           <br></br>
           <p
