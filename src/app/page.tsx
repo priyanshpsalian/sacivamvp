@@ -1,15 +1,15 @@
-// Import necessary modules and components
 "use client"
+
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
+import ReactPlayer from 'react-player';
 import { Modal } from 'react-responsive-modal';
 import 'react-responsive-modal/styles.css';
 import { FooterTwo } from './../components/Footer/footer';
 import SignUp from './auth/signup/page';
-import ReactPlayer from 'react-player';
 
-// Define the Page component
+
 const Page: React.FC = () => {
   const [open, setOpen] = useState(false);
 
@@ -17,12 +17,11 @@ const Page: React.FC = () => {
   const onCloseModal = () => setOpen(false);
   return (
     <div className="flex flex-col items-center justify-center bg-[#f6f6f6] ">
-      {/* Main container */}
+      
       <div className=" shadow-xl  w-full">
-        {/* Header section */}
+        
         <header className="text-center mb-8">
           <div className='flex flex-col w-full  items-center justify-center pt-8'>
-            {/* <video className='object-cover ' src="/headervideo.mp4" muted loop autoPlay></video> */}
             <ReactPlayer
               url="/headervideo.mp4"
               width="640"
@@ -48,7 +47,7 @@ const Page: React.FC = () => {
               fontWeight: 400,
               lineHeight: '43.2px',
               textAlign: 'center',
-              color: '#4B5563', // Equivalent to Tailwind's text-gray-600
+              color: '#4B5563', 
             }}
           >
             The Only{' '}
@@ -64,7 +63,7 @@ const Page: React.FC = () => {
               fontWeight: 600,
               lineHeight: '28.8px',
               textAlign: 'center',
-              padding: '10px 24px', // Equivalent to py-2 px-6
+              padding: '10px 24px', 
             }}
           >
             Join the Network for Free
@@ -82,7 +81,7 @@ const Page: React.FC = () => {
             fontWeight: 400,
             lineHeight: '43.2px',
             textAlign: 'center',
-            color: '#4B5563', // Equivalent to Tailwind's text-gray-600
+            color: '#4B5563', 
           }}
         >
           One platform to find roommates, housing, network and more
@@ -95,7 +94,7 @@ const Page: React.FC = () => {
             fontWeight: 400,
             lineHeight: '43.2px',
             textAlign: 'center',
-            color: '#4B5563', // Equivalent to Tailwind's text-gray-600
+            color: '#4B5563',
           }}
         >
           as an International Student in the USA.
@@ -377,5 +376,3 @@ const Page: React.FC = () => {
 };
 
 export default Page;
-
-
