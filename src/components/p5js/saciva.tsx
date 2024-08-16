@@ -50,7 +50,7 @@ const Sacivap5js = () => {
                     }
     
                     update() {
-                        p.fill(255);
+                        p.fill(120, 81, 169);
                         p.ellipse(this.loc.x, this.loc.y, this.loc.z);
                     }
                 }
