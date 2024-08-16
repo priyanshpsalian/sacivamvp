@@ -7,7 +7,9 @@ import { Modal } from 'react-responsive-modal';
 import 'react-responsive-modal/styles.css';
 import { FooterTwo } from './../components/Footer/footer';
 import SignUp from './auth/signup/page';
-import Sacivap5js from '@/components/p5js/saciva';
+import dynamic from 'next/dynamic';
+
+const Sacivap5js = dynamic(() => import('@/components/p5js/saciva'), { ssr: false });
 
 
 const Page: React.FC = () => {
