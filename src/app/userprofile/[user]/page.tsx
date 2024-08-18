@@ -5,11 +5,14 @@ import { CldUploadButton } from 'next-cloudinary';
 import Image from 'next/image';
 import { useParams, useRouter } from 'next/navigation';
 import { useState } from 'react';
+import CreatableSelect from 'react-select/creatable';
 
 function Page() {
   const [name, setName] = useState('');
   const [age, setAge] = useState('');
   const [university, setUniversity] = useState('');
+  const [startYear, setStartYear] = useState('');
+  const [endYear, setEndYear] = useState('');
   const [language, setLanguage] = useState('');
   const [major, setMajor] = useState('');
   const [country, setCountry] = useState('');
@@ -37,7 +40,22 @@ function Page() {
     throw new Error('Invalid userId type');
   }
 
-  // upload image
+  // Options for Select components
+  const countryOptions = [
+    { value: 'India', label: 'India' },
+    { value: 'United States', label: 'United States' },
+    { value: 'Canada', label: 'Canada' },
+    // Add more countries as needed
+  ];
+
+  const majorOptions = [
+    { value: 'Computer Science', label: 'Computer Science' },
+    { value: 'Mechanical Engineering', label: 'Mechanical Engineering' },
+    { value: 'Business Administration', label: 'Business Administration' },
+    // Add more majors as needed
+  ];
+
+  // Upload image
   async function uploadImage(result: any) {
     console.log(result.info.secure_url);
     setImage(result.info.secure_url);
@@ -47,7 +65,7 @@ function Page() {
   async function profileUploaded() {
     try {
       const response = await axios.post("/api/user", {
-        email, name, gender, age: parseInt(age), image: imagelink, university, major, language, country,
+        email, name, gender, age: parseInt(age), image: imagelink, university, startYear, endYear, major, language, country,
         foodPreference, smoke, drink, expenditure, houseAmbiance, tidiness, socializing, aboutYourself
       });
       if (response) {
@@ -58,296 +76,303 @@ function Page() {
     }
   }
 
+  const AboutYourself: React.FC = () => {
+    const [aboutYourself, setAboutYourself] = useState('');
+    const [error, setError] = useState('');
+  
+    const handleTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+      const wordCount = e.target.value.split(' ').filter(Boolean).length;
+      if (wordCount <= 250) {
+        setAboutYourself(e.target.value);
+        setError(''); // Clear any previous error
+      } else {
+        setError('You can only enter up to 250 words.');
+      }
+    }; 
+
   return (
-    // <div className="h-[150vh] bg-lavender">
-    <div className="min-h-screen bg-lavender">
-      <div className="mx-auto max-w-7xl px-4">
-        <div className="flex flex-col space-y-8 pb-10 pt-12 md:pt-24">
-          <p className="text-center text-3xl font-bold text-indigoCustom md:text-5xl md:leading-10">
-            Make Your Profile
-          </p>
-        </div>
-        <div className="mx-auto max-w-7xl py-12 px-8 bg-royal-purple rounded-lg">
-          <div className="grid items-center justify-items-center gap-x-4 gap-y-10 lg:grid-cols-2">
-            <div className="flex items-center justify-center">
-              <div className="px-2 md:px-12">
-                <p className="text-2xl font-bold text-lightPurple md:text-4xl">Get in touch</p>
-                <p className="mt-4 text-lg text-lightPurple">
-                  Our friendly team would love to hear from you.
-                </p>
-                <div></div>
-                <form action="" className="mt-8 space-y-4">
-                  <div className="grid w-full gap-y-4 md:gap-x-4 lg:grid-cols-2">
-                    <div className="grid w-full items-center gap-1.5">
-                      <label
-                        className="text-sm font-medium leading-none text-lightPurple peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                        htmlFor="profile_image"
-                      >
-                        Profile Image
-                      </label>
-                      <Image
-                        className="relative z-0 inline-block h-20 w-20 rounded-full ring-2 ring-white"
-                        src={image}
-                        alt="Delba"
-                        width={80}
-                        height={80}
-                      />
-                      <CldUploadButton
-                        className="bg-indigoCustom rounded-full px-6 py-2 text-gray-50"
-                        onUpload={uploadImage}
-                        uploadPreset="pf0ysyc8"
-                      />
-                    </div>
-                    <div className="grid w-full items-center gap-1.5">
-                      <label
-                        className="text-sm font-medium leading-none text-lightPurple peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                        htmlFor="name"
-                      >
-                        Name
-                      </label>
-                      <input
-                        className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
-                        type="text"
-                        id="name"
-                        placeholder="Name"
-                        onChange={(e) => setName(e.target.value)}
-                      />
-                      <label
-                        className="text-sm font-medium leading-none text-lightPurple peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                        htmlFor="age"
-                      >
-                        Age
-                      </label>
-                      <input
-                        className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
-                        type="number"
-                        id="age"
-                        placeholder="Age"
-                        onChange={(e) => setAge(e.target.value)}
-                      />
-                    </div>
-                  </div>
-                  <div className="grid w-full items-center gap-1.5">
-                    <label
-                      className="text-sm font-medium leading-none text-lightPurple peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                      htmlFor="university"
-                    >
-                      University
-                    </label>
-                    <input
-                      className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
-                      type="text"
-                      id="university"
-                      placeholder="University Name"
-                      onChange={(e) => setUniversity(e.target.value)}
-                    />
-                  </div>
-                  <div className="grid w-full items-center gap-1.5">
-                    <label
-                      className="text-sm font-medium leading-none text-lightPurple peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                      htmlFor="language"
-                    >
-                      Language
-                    </label>
-                    <input
-                      className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
-                      type="text"
-                      id="language"
-                      placeholder="Language"
-                      onChange={(e) => setLanguage(e.target.value)}
-                    />
-                  </div>
-                  <div className="grid w-full items-center gap-1.5">
-                    <label
-                      className="text-sm font-medium leading-none text-lightPurple peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                      htmlFor="major"
-                    >
-                      Major
-                    </label>
-                    <input
-                      className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
-                      type="text"
-                      id="major"
-                      placeholder="Major"
-                      onChange={(e) => setMajor(e.target.value)}
-                    />
-                  </div>
-                  <div className="grid w-full items-center gap-1.5">
-                  <label
-                      className="text-sm font-medium leading-none text-lightPurple peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                      htmlFor="country"
-                    >
-                      Country
-                    </label>
-                    <input
-                      className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
-                      type="text"
-                      id="country"
-                      placeholder="Country"
-                      onChange={(e) => setCountry(e.target.value)}
-                    />
-                    <input
-                      className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
-                      type="text"
-                      id="country"
-                      placeholder="Country"
-                      onChange={(e) => setCountry(e.target.value)}
-                    />
-                  </div>
-                  <div className="grid w-full items-center gap-1.5">
-                    <label
-                      className="text-sm font-medium leading-none text-lightPurple peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                      htmlFor="food_preference"
-                    >
-                      Food Preference
-                    </label>
-                    <select
-                      className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm text-black placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
-                      id="food_preference"
-                      onChange={(e) => setFoodPreference(e.target.value)}
-                    >
-                      <option value="Veg">Veg</option>
-                      <option value="Non-Veg">Non-Veg</option>
-                      <option value="Vegan">Vegan</option>
-                    </select>
-                  </div>
-                  <div className="grid w-full items-center gap-1.5">
-                    <label
-                      className="text-sm font-medium leading-none text-lightPurple peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                      htmlFor="smoke"
-                    >
-                      Smoke
-                    </label>
-                    <select
-                      className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm text-black placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
-                      id="smoke"
-                      onChange={(e) => setSmoke(e.target.value)}
-                    >
-                      <option value="No">No</option>
-                      <option value="Yes">Yes</option>
-                      <option value="Occasionally">Occasionally</option>
-                    </select>
-                  </div>
-                  <div className="grid w-full items-center gap-1.5">
-                    <label
-                      className="text-sm font-medium leading-none text-lightPurple peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                      htmlFor="drink"
-                    >
-                      Drink
-                    </label>
-                    <select
-                      className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm text-black placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
-                      id="drink"
-                      onChange={(e) => setDrink(e.target.value)}
-                    >
-                      <option value="No">No</option>
-                      <option value="Yes">Yes</option>
-                      <option value="Occasionally">Occasionally</option>
-                    </select>
-                  </div>
-                  <div className="grid w-full items-center gap-1.5">
-                    <label
-                      className="text-sm font-medium leading-none text-lightPurple peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                      htmlFor="expenditure"
-                    >
-                      Expenditure
-                    </label>
-                    <select
-                      className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm text-black placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
-                      id="expenditure"
-                      onChange={(e) => setExpenditure(e.target.value)}
-                    >
-                      <option value="Spends frugally">Spends frugally</option>
-                      <option value="Moderate spender">Moderate spender</option>
-                      <option value="Lavish spender">Lavish spender</option>
-                    </select>
-                  </div>
-                  <div className="grid w-full items-center gap-1.5">
-                    <label
-                      className="text-sm font-medium leading-none text-lightPurple peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                      htmlFor="house_ambiance"
-                    >
-                      House Ambiance
-                    </label>
-                    <select
-                      className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm text-black placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
-                      id="house_ambiance"
-                      onChange={(e) => setHouseAmbiance(e.target.value)}
-                    >
-                      <option value="Calm and quiet">Calm and quiet</option>
-                      <option value="Lively and vibrant">Lively and vibrant</option>
-                    </select>
-                  </div>
-                  <div className="grid w-full items-center gap-1.5">
-                    <label
-                      className="text-sm font-medium leading-none text-lightPurple peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                      htmlFor="tidiness"
-                    >
-                      Tidiness
-                    </label>
-                    <select
-                      className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm text-black placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
-                      id="tidiness"
-                      onChange={(e) => setTidiness(e.target.value)}
-                    >
-                      <option value="Neat and organized">Neat and organized</option>
-                      <option value="Moderately tidy">Moderately tidy</option>
-                      <option value="Flexible">Flexible</option>
-                    </select>
-                  </div>
-                  <div className="grid w-full items-center gap-1.5">
-                    <label
-                      className="text-sm font-medium leading-none text-lightPurple peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                      htmlFor="socializing"
-                    >
-                      Socializing Preference
-                    </label>
-                    <select
-                      className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm text-black placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
-                      id="socializing"
-                      onChange={(e) => setSocializing(e.target.value)}
-                    >
-                      <option value="Solitude">Solitude</option>
-                      <option value="Occasional socializing">Occasional socializing</option>
-                      <option value="Social butterfly">Social butterfly</option>
-                    </select>
-                  </div>
-                  <div className="grid w-full items-center gap-1.5">
-                    <label
-                      className="text-sm font-medium leading-none text-lightPurple peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                      htmlFor="about_yourself"
-                    >
-                      About Yourself
-                    </label>
-                    <textarea
-                      className="flex h-20 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-700 dark:text-gray-50 dark:focus:ring-gray-400 dark:focus:ring-offset-gray-900"
-                      id="about_yourself"
-                      placeholder="Tell us about yourself"
-                      onChange={(e) => setAboutYourself(e.target.value)}
-                    />
-                  </div>
-                  <button
-                    onClick={profileUploaded}
-                    type="button"
-                    className="w-full rounded-md bg-indigoCustom px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigoCustom/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigoCustom"
-                  >
-                    Create Profile
-                  </button>
-                </form>
-              </div>
-            </div>
-            <Image
-              alt="Contact us"
-              className="hidden max-h-full w-full rounded-lg object-cover lg:block pr-12"
-              src="https://images.unsplash.com/photo-1615840287214-7ff58936c4cf?ixlib=rb-4.0.3&auto=format&fit=crop&w=687&h=800&q=80"
-              width={687}
-              height={800}
-            />
-          </div>
-        </div>
+    <div className="flex flex-col items-center  bg-[#4B00828C] p-4 rounded-lg shadow-lg max-w-md mx-auto sm:max-w-lg md:max-w-xl lg:max-w-2xl xl:max-w-3xl">
+    <div className="flex flex-col items-center space-y-4">
+      <h1 className="text-xl font-bold text-[#4B0082]">Create Your Profile</h1>
+      <div className="relative w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 lg:w-48 lg:h-48">
+        <Image
+          className="rounded-full object-cover"
+          src={image || '/default-profile.png'}
+          alt="Profile Image"
+          layout="fill"
+        />
+        <CldUploadButton
+          className="absolute bottom-0 right-0 bg-[#AE8DC7] text-white rounded-full p-2"
+          onUpload={uploadImage}
+          uploadPreset="pf0ysyc8"
+        >
+          Upload
+        </CldUploadButton>
       </div>
     </div>
-  );
+
+    <form className="space-y-4 mt-4 w-full">
+      <div className="flex flex-col space-y-2">
+        <label className="text-x3 font-bold text-[#4B0082]" htmlFor="name">
+          Name
+        </label>
+        <input
+          type="text"
+          id="name"
+          placeholder="Enter your name"
+          className="border rounded-md p-2 text-sm w-full border-[#4B00828C]"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+      </div>
+
+      <div className="flex flex-col space-y-2">
+        <label className="text-x3 font-bold text-[#4B0082]" htmlFor="age">
+          Age
+        </label>
+        <input
+          type="number"
+          id="age"
+          placeholder="Enter your age"
+          className="border rounded-md p-2 text-sm w-full border-[#4B00828C]"
+          value={age}
+          onChange={(e) => setAge(e.target.value)}
+        />
+      </div>
+
+      <div className="flex flex-col space-y-2">
+        <label className="text-x3 font-bold text-[#4B0082]" htmlFor="university">
+          University
+        </label>
+        <input
+          type="text"
+          id="university"
+          placeholder="Enter your university"
+          className="border rounded-md p-2 text-sm w-full border-[#4B00828C]"
+          value={university}
+          onChange={(e) => setUniversity(e.target.value)}
+        />
+      </div>
+
+      <div className="flex flex-col space-y-2 mt-4">
+        <label className="text-x3 font-bold text-[#4B0082]" htmlFor="startYear">
+          University Starting Year
+        </label>
+        <input
+          type="date"
+          id="startYear"
+          className="border rounded-md p-2 text-sm w-full border-[#4B00828C]"
+          value={startYear}
+          onChange={(e) => setStartYear(e.target.value)}
+        />
+      </div>
+
+      <div className="flex flex-col space-y-2 mt-4">
+        <label className="text-x3 font-bold text-[#4B0082]" htmlFor="endYear">
+          University Ending Year
+        </label>
+        <input
+          type="date"
+          id="endYear"
+          className="border rounded-md p-2 text-sm w-full border-[#4B00828C]"
+          value={endYear}
+          onChange={(e) => setEndYear(e.target.value)}
+        />
+      </div>
+
+      <div className="flex flex-col space-y-2">
+        <label className="text-x3 font-bold text-[#4B0082]" htmlFor="language">
+          Language
+        </label>
+        <input
+          type="text"
+          id="language"
+          placeholder="Enter your language"
+          className="border rounded-md p-2 text-sm w-full border-[#4B00828C]"
+          value={language}
+          onChange={(e) => setLanguage(e.target.value)}
+        />
+      </div>
+
+      <div className="flex flex-col space-y-2">
+        <label className="text-x3 font-bold text-[#4B0082]" htmlFor="major">
+          Major
+        </label>
+        <CreatableSelect
+          isClearable
+          options={majorOptions}
+          onChange={(newValue) => setMajor(newValue ? newValue.value : '')}
+          placeholder="Select or create major"
+          className="w-full border-[#4B00828C]"
+          styles={{
+            control: (base) => ({
+              ...base,
+              borderColor: "#4B00828C",
+            }),
+          }}
+        />
+      </div>
+
+      <div className="flex flex-col space-y-2">
+        <label className="text-x3 font-bold text-[#4B0082]" htmlFor="country">
+          Country
+        </label>
+        <CreatableSelect
+          isClearable
+          options={countryOptions}
+          onChange={(newValue) => setCountry(newValue ? newValue.value : '')}
+          placeholder="Select or create country"
+          className="w-full border-[#4B00828C]"
+          styles={{
+            control: (base) => ({
+              ...base,
+              borderColor: "#4B00828C",
+            }),
+          }}
+        />
+      </div>
+
+      <div className="flex flex-col space-y-2">
+        <label className="text-x3 font-bold text-[#4B0082]" htmlFor="food_preference">
+          Food Preference
+        </label>
+        <select
+          id="food_preference"
+          className="border rounded-md p-2 text-sm w-full border-[#4B00828C]"
+          value={foodPreference}
+          onChange={(e) => setFoodPreference(e.target.value)}
+        >
+          <option value="Veg">Veg</option>
+          <option value="Non-Veg">Non-Veg</option>
+          <option value="Vegan">Vegan</option>
+        </select>
+      </div>
+
+      <div className="flex flex-col space-y-2">
+        <label className="text-x3 font-bold text-[#4B0082]" htmlFor="smoke">
+          Do you smoke?
+        </label>
+        <select
+          id="smoke"
+          className="border rounded-md p-2 text-sm w-full border-[#4B00828C]"
+          value={smoke}
+          onChange={(e) => setSmoke(e.target.value)}
+        >
+          <option value="No">No</option>
+          <option value="Occasionally">Occasionally</option>
+          <option value="Yes">Yes</option>
+        </select>
+      </div>
+
+      <div className="flex flex-col space-y-2">
+        <label className="text-x3 font-bold text-[#4B0082]" htmlFor="drink">
+          Do you drink?
+        </label>
+        <select
+          id="drink"
+          className="border rounded-md p-2 text-sm w-full border-[#4B00828C]"
+          value={drink}
+          onChange={(e) => setDrink(e.target.value)}
+        >
+          <option value="No">No</option>
+          <option value="Occasionally">Occasionally</option>
+          <option value="Yes">Yes</option>
+        </select>
+      </div>
+
+      <div className="flex flex-col space-y-2">
+        <label className="text-x3 font-bold text-[#4B0082]" htmlFor="expenditure">
+          Expenditure
+        </label>
+        <select
+          id="expenditure"
+          className="border rounded-md p-2 text-sm w-full border-[#4B00828C]"
+          value={expenditure}
+          onChange={(e) => setExpenditure(e.target.value)}
+        >
+          <option value="Spends frugally">Spends frugally</option>
+          <option value="Moderate spender">Moderate spender</option>
+          <option value="Spends lavishly">Spends lavishly</option>
+        </select>
+      </div>
+
+      <div className="flex flex-col space-y-2">
+        <label className="text-x3 font-bold text-[#4B0082]" htmlFor="house_ambiance">
+          House Ambiance
+        </label>
+        <select
+          id="house_ambiance"
+          className="border rounded-md p-2 text-sm w-full border-[#4B00828C]"
+          value={houseAmbiance}
+          onChange={(e) => setHouseAmbiance(e.target.value)}
+        >
+          <option value="Calm and quiet">Calm and quiet</option>
+          <option value="Friendly and social">Friendly and social</option>
+          <option value="Party house">Party house</option>
+        </select>
+      </div>
+
+      <div className="flex flex-col space-y-2">
+        <label className="text-x3 font-bold text-[#4B0082]" htmlFor="tidiness">
+          Tidiness
+        </label>
+        <select
+          id="tidiness"
+          className="border rounded-md p-2 text-sm w-full border-[#4B00828C]"
+          value={tidiness}
+          onChange={(e) => setTidiness(e.target.value)}
+        >
+          <option value="Very tidy">Very tidy</option>
+          <option value="Flexible">Flexible</option>
+          <option value="Not tidy">Not tidy</option>
+        </select>
+      </div>
+
+      <div className="flex flex-col space-y-2">
+        <label className="text-x3 font-bold text-[#4B0082]" htmlFor="socializing">
+          Socializing
+        </label>
+        <select
+          id="socializing"
+          className="border rounded-md p-2 text-sm w-full border-[#4B00828C]"
+          value={socializing}
+          onChange={(e) => setSocializing(e.target.value)}
+        >
+          <option value="Solitude">Solitude</option>
+          <option value="Moderate socializing">Moderate socializing</option>
+          <option value="Highly social">Highly social</option>
+        </select>
+      </div>
+
+      <div className="flex flex-col space-y-2">
+        <label className="text-x3 font-bold text-[#4B0082]" htmlFor="aboutYourself">
+          About Yourself
+        </label>
+        <textarea
+          id="aboutYourself"
+          placeholder="Write about yourself (max 250 words)"
+          className="border rounded-md p-2 text-sm w-full border-[#4B00828C] h-24 resize-none"
+          value={aboutYourself}
+          onChange={handleTextChange}
+        />
+        {error && <p className="text-red-500">{error}</p>}
+      </div>
+
+      <div className="flex flex-col items-center mt-6">
+        <button
+          type="button"
+          className="bg-[#4B0082] text-white font-bold py-2 px-4 rounded-md w-full sm:w-auto"
+          onClick={profileUploaded}
+        >
+          Save Profile
+        </button>
+      </div>
+    </form>
+  </div>
+);
+}
+
+return <AboutYourself />;
 }
 
 export default Page;

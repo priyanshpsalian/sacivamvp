@@ -1,12 +1,10 @@
 'use client'
 
-import SignUp from '@/app/auth/signup/page';
 import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
-import React, { useState } from 'react';
-import { Modal } from 'react-responsive-modal';
-import 'react-responsive-modal/styles.css';
 import Link from 'next/link';
+import React, { useState } from 'react';
+import 'react-responsive-modal/styles.css';
 
 
 export default function Navbar() {
@@ -51,7 +49,7 @@ export default function Navbar() {
             type="button"
             className="mt-4 w-full rounded-md bg-purple-600 px-3 py-2 text-sm font-semibold text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
             >
-            Log In
+            Sign Up
           </button>
             </Link>
         </div>
