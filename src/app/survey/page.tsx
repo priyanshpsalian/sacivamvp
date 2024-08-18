@@ -47,12 +47,12 @@ export default function Survey() {
     <div className="min-h-screen bg-royal-purple flex items-center justify-center py-10 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full bg-lavender shadow-lg rounded-lg p-8">
         <h2 className="mb-6 text-3xl font-extrabold text-center text-indigoCustom">
-          University Experience Survey
+        Survey of Experience
         </h2>
         <form className="space-y-6" onSubmit={handleSubmit}>
           <div>
             <label htmlFor="universityName" className="block text-sm font-medium text-gray-100">
-              University Name
+              University Experience
             </label>
             <input
               id="universityName"
@@ -73,7 +73,7 @@ export default function Survey() {
 
           <div>
             <label htmlFor="cityName" className="block text-sm font-medium text-gray-100">
-              City Name
+              YOUR Major EXPERIENCE
             </label>
             <input
               id="cityName"
@@ -94,7 +94,7 @@ export default function Survey() {
 
           <div>
             <label htmlFor="experience" className="block text-sm font-medium text-gray-100">
-                Tell us about your university experience
+                City Experience
             </label>
             <textarea
                 id="experience"
