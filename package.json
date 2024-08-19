@@ -17,7 +17,7 @@
     "lucide-react": "^0.412.0",
     "mongoose": "^8.5.1",
     "next": "14.2.5",
-    "next-cloudinary": "^6.6.2",
+    "next-cloudinary": "^6.10.0",
     "nodemailer": "^6.9.14",
     "p5": "^1.10.0",
     "react": "^18",
@@ -25,6 +25,7 @@
     "react-hot-toast": "^2.4.1",
     "react-player": "^2.16.0",
     "react-responsive-modal": "^6.4.2",
+    "react-select": "^5.8.0",
     "tailwind-merge": "^2.4.0"
   },
   "devDependencies": {
