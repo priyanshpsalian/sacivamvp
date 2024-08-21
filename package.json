@@ -9,9 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@types/react-select": "^5.0.1",
-    "axios": "^1.7.4",
+    "@heroicons/react": "^1.0.6",
+    "axios": "^1.7.2",
     "clsx": "^2.1.1",
+    "heroicons-react": "^1.4.1",
     "input-otp": "^1.2.4",
     "lucide-react": "^0.412.0",
     "mongoose": "^8.5.1",
