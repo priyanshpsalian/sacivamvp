@@ -26,32 +26,45 @@ function scrollRight() {
 }
 
 export default function RoommateFinder() {
+  const [selectedFilter, setSelectedFilter] = useState(null);
+
   const users = [
     {
       name: "Anonymous Girl",
       university: "DePaul University",
       country: "India",
-      match: "12/12 Prefers Match",
+      startDate: "2023",
+      endDate: "2025",
+      about: "I am a hard core nerd.",
+      graduation: "May 2025", // Added graduation date
+      match: "10/10 Prefers Match", // Updated to match the image
+      preferences: ["Vegetarian", "Doesn’t Smoke", "Doesn’t Drink"],
       avatar: "/avatar-girl.png", // replace with your avatar image path
     },
     {
       name: "Abhishikh M",
+      age: 25, // Added age field
+      gender: "Male", // Added gender field
       language: "Telugu",
-      university: "DePaul",
+      university: "DePaul University",
       country: "India",
+      startDate: "2023",
+      endDate: "2025",
+      about: "I am a hard core nerd.",
       graduation: "Graduates June 2023",
       preferences: [
         "Vegetarian",
         "Doesn’t Smoke",
-        "Socializes less",
-        "Spends Frugally",
         "Doesn’t Drink",
+        "Socializes Less",
+        "Spends Frugally",
         "Strictly Tidy",
         "Likes Quiet Ambiance",
       ],
       avatar: "/avatar-boy.png", // replace with your avatar image path
     },
   ];
+
   const [selectedUser, setSelectedUser] = useState(null);
     const openModal = (users) => {
       setSelectedUser(users);
@@ -60,6 +73,39 @@ export default function RoommateFinder() {
     const closeModal = () => {
       setSelectedUser(null);
     };
+    const filteredUsers = users.filter((user) => {
+      if (!selectedFilter) return true;
+
+      switch (selectedFilter) {
+        case "Country":
+          return user.country === "India"; // Replace with desired country
+        case "Language":
+          return user.language === "Telugu"; // Replace with desired language
+        case "University":
+          return user.university === "DePaul"; // Replace with desired university
+        case "Food":
+          return user.preferences.includes("Vegetarian");
+        case "Smoke":
+          return user.preferences.includes("Doesn't Smoke");
+        case "Gender":
+          return user.gender === "Male"; // Replace with desired gender
+        case "Drink":
+          return user.preferences.includes("Doesn't Drink");
+        case "Expenditure":
+          return user.preferences.includes("Spends Frugally");
+        case "Tidiness":
+          return user.preferences.includes("Strictly Tidy");
+        case "Volume":
+          return user.preferences.includes("Likes Quiet Ambiance");
+        case "Socializing":
+          return user.preferences.includes("Socializes less");
+        case "Age":
+          return user.age >= 25; // Replace with desired age filter
+        default:
+          return true;
+      }
+    });
+
   return (
     <div className="p-4 sm:p-6 font-sans">
       <div className="relative my-4 sm:my-6">
@@ -75,40 +121,76 @@ export default function RoommateFinder() {
             id="scrollContainer"
             className="flex gap-2 whitespace-nowrap px-10"
           >
-            <button className="bg-purple-200 px-3 py-2 rounded text-xs sm:text-sm">
+            <button
+              className="bg-purple-200 px-3 py-2 rounded text-xs sm:text-sm"
+              onClick={() => setSelectedFilter("Country")}
+            >
               Country
             </button>
-            <button className="bg-purple-200 px-3 py-2 rounded text-xs sm:text-sm">
+            <button
+              className="bg-purple-200 px-3 py-2 rounded text-xs sm:text-sm"
+              onClick={() => setSelectedFilter("Language")}
+            >
               Language
             </button>
-            <button className="bg-purple-200 px-3 py-2 rounded text-xs sm:text-sm">
+            <button
+              className="bg-purple-200 px-3 py-2 rounded text-xs sm:text-sm"
+              onClick={() => setSelectedFilter("University")}
+            >
               University
             </button>
-            <button className="bg-purple-200 px-3 py-2 rounded text-xs sm:text-sm">
+            <button
+              className="bg-purple-200 px-3 py-2 rounded text-xs sm:text-sm"
+              onClick={() => setSelectedFilter("Food")}
+            >
               Food
             </button>
-            <button className="bg-purple-200 px-3 py-2 rounded text-xs sm:text-sm">
+            <button
+              className="bg-purple-200 px-3 py-2 rounded text-xs sm:text-sm"
+              onClick={() => setSelectedFilter("Smoke")}
+            >
               Smoke
             </button>
-            <button className="bg-purple-200 px-3 py-2 rounded text-xs sm:text-sm">
+            <button
+              className="bg-purple-200 px-3 py-2 rounded text-xs sm:text-sm"
+              onClick={() => setSelectedFilter("Gender")}
+            >
               Gender
             </button>
-            <button className="bg-purple-200 px-3 py-2 rounded text-xs sm:text-sm">
+            <button
+              className="bg-purple-200 px-3 py-2 rounded text-xs sm:text-sm"
+              onClick={() => setSelectedFilter("Drink")}
+            >
               Drink
             </button>
-            <button className="bg-purple-200 px-3 py-2 rounded text-xs sm:text-sm">
+            <button
+              className="bg-purple-200 px-3 py-2 rounded text-xs sm:text-sm"
+              onClick={() => setSelectedFilter("Expenditure")}
+            >
               Expenditure
             </button>
-            <button className="bg-purple-200 px-3 py-2 rounded text-xs sm:text-sm">
+            <button
+              className="bg-purple-200 px-3 py-2 rounded text-xs sm:text-sm"
+              onClick={() => setSelectedFilter("Tidiness")}
+            >
               Tidiness
             </button>
-            <button className="bg-purple-200 px-3 py-2 rounded text-xs sm:text-sm">
+            <button
+              className="bg-purple-200 px-3 py-2 rounded text-xs sm:text-sm"
+              onClick={() => setSelectedFilter("Volume")}
+            >
               Volume
             </button>
-            <button className="bg-purple-200 px-3 py-2 rounded text-xs sm:text-sm">
+            <button
+              className="bg-purple-200 px-3 py-2 rounded text-xs sm:text-sm"
+              onClick={() => setSelectedFilter("Socializing")}
+            >
               Socializing
             </button>
-            <button className="bg-purple-200 px-3 py-2 rounded text-xs sm:text-sm">
+            <button
+              className="bg-purple-200 px-3 py-2 rounded text-xs sm:text-sm"
+              onClick={() => setSelectedFilter("Age")}
+            >
               Age
             </button>
           </div>
@@ -125,7 +207,7 @@ export default function RoommateFinder() {
       <div>
         {/* User Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-          {users.map((user, index) => (
+          {filteredUsers.map((user, index) => (
             <div
               key={index}
               className="bg-purple-100 p-4 sm:p-5 rounded-lg text-center cursor-pointer flex items-center justify-between"
@@ -157,8 +239,8 @@ export default function RoommateFinder() {
 
         {/* Modal */}
         {selectedUser && (
-          <div className="fixed inset-0 flex items-end justify-center z-50 bg-black bg-opacity-50">
-            <div className="bg-white p-6 rounded-t-lg shadow-lg w-full sm:w-3/4 lg:w-1/2 animate-slide-up">
+          <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+            <div className="relative bg-white p-6 rounded-lg shadow-lg w-full sm:w-3/4 lg:w-1/2">
               <button
                 className="absolute top-2 right-2 text-gray-700"
                 onClick={closeModal}
@@ -171,28 +253,77 @@ export default function RoommateFinder() {
                   alt={selectedUser.name}
                   className="w-16 h-16 sm:w-24 sm:h-24 rounded-full"
                 />
-                <h3 className="text-lg font-bold">{selectedUser.name}</h3>
+                <div className="flex-1">
+                  <h3 className="text-2xl font-bold">{selectedUser.name}</h3>
+                  <div className="flex space-x-2 mt-2">
+                    <p className="text-base">{selectedUser.age} |</p>
+                    <p className="text-base">{selectedUser.language} |</p>
+                    <p className="text-base">{selectedUser.country}</p>
+                  </div>
+                </div>
               </div>
-              {selectedUser.university && (
-                <p className="text-sm mb-2">{selectedUser.university}</p>
-              )}
-              {selectedUser.country && (
-                <p className="text-sm mb-2">{selectedUser.country}</p>
-              )}
-              {selectedUser.match && (
-                <p className="text-sm mb-2">{selectedUser.match}</p>
-              )}
-              {selectedUser.graduation && (
-                <p className="text-sm mb-2">{selectedUser.graduation}</p>
-              )}
-              {selectedUser.preferences && (
-                <ul className="text-left mt-3 text-sm space-y-2">
-                  {selectedUser.preferences.map((preference, i) => (
-                    <li key={i}>{preference}</li>
-                  ))}
-                </ul>
-              )}
-              <button className="mt-4 bg-purple-600 text-white px-4 py-2 rounded text-sm w-full">
+
+              <p className="text-lg font-semibold mt-4">Currently Pursuing:</p>
+              <p className="text-xl font-light">
+                Master's Degree in {selectedUser.major} <br />
+                at {selectedUser.university}
+              </p>
+              <p className="text-sm mt-2">
+                from <span className="font-bold">{selectedUser.startDate}</span>{" "}
+                till <span className="font-bold">{selectedUser.endDate}</span>
+              </p>
+
+              <div className="mt-4">
+                <p className="text-lg font-semibold">Preferences:</p>
+                <div className="flex flex-wrap gap-2 mt-2">
+                  {selectedUser.preferences.includes("Vegetarian") && (
+                    <div className="px-3 py-1 bg-gray-200 rounded-full">
+                      Vegetarian
+                    </div>
+                  )}
+                  {selectedUser.preferences.includes("Doesn't Drink") && (
+                    <div className="px-3 py-1 bg-gray-200 rounded-full">
+                      Doesn't Drink
+                    </div>
+                  )}
+                  {selectedUser.preferences.includes("Doesn't Smoke") && (
+                    <div className="px-3 py-1 bg-gray-200 rounded-full">
+                      Doesn't Smoke
+                    </div>
+                  )}
+                  {selectedUser.preferences.includes("Socializes Less") && (
+                    <div className="px-3 py-1 bg-gray-200 rounded-full">
+                      Socializes Less
+                    </div>
+                  )}
+                  {selectedUser.preferences.includes("Spends Frugally") && (
+                    <div className="px-3 py-1 bg-gray-200 rounded-full">
+                      Spends Frugally
+                    </div>
+                  )}
+                  {selectedUser.preferences.includes("Strictly Tidy") && (
+                    <div className="px-3 py-1 bg-gray-200 rounded-full">
+                      Strictly Tidy
+                    </div>
+                  )}
+                  {selectedUser.preferences.includes(
+                    "Likes Quiet Ambiance"
+                  ) && (
+                    <div className="px-3 py-1 bg-gray-200 rounded-full">
+                      Likes Quiet Ambiance
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              <div className="mt-6">
+                <p className="text-lg font-semibold">
+                  A little more about myself!
+                </p>
+                <p className="text-sm mt-2">{selectedUser.about}</p>
+              </div>
+
+              <button className="mt-6 bg-purple-600 text-white px-4 py-2 rounded text-sm w-full">
                 Send Request
               </button>
             </div>
