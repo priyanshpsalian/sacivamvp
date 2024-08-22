@@ -1,24 +1,25 @@
 "use client";
 
+import {
+  countryOptions,
+  drinkOptions,
+  expenditureOptions,
+  foodOptions,
+  genderOptions,
+  houseAmbianceOptions,
+  majorOptions,
+  smokeOptions,
+  socializingOptions,
+  tidinessOptions,
+  universityOptions
+} from "@/app/userprofile/constants/index";
 import axios from "axios";
 import { CldUploadButton } from 'next-cloudinary';
 import Image from 'next/image';
 import { useParams, useRouter } from 'next/navigation';
 import { useCallback, useState } from 'react';
-import Select from 'react-select';
 import toast, { Toaster } from "react-hot-toast";
-import {
-  countryOptions,
-  socializingOptions,
-  tidinessOptions,
-  houseAmbianceOptions,
-  drinkOptions,
-  expenditureOptions,
-  smokeOptions,
-  genderOptions,
-  foodOptions,
-  majorOptions
-} from "@/app/userprofile/constants/index";
+import Select from 'react-select';
 
 function Page() {
   const [name, setName] = useState('');
@@ -127,6 +128,7 @@ function Page() {
             placeholder="Enter your name"
             className="border rounded-md p-2 text-sm w-full border-[#4B00828C]"
             value={name}
+            required
             onChange={(e) => setName(e.target.value)}
           />
         </div>
@@ -141,6 +143,7 @@ function Page() {
             placeholder="Enter your age"
             className="border rounded-md p-2 text-sm w-full border-[#4B00828C]"
             value={age}
+            required
             onChange={(e) => setAge(e.target.value)}
           />
         </div>
@@ -155,6 +158,7 @@ function Page() {
             value={genderOptions.find(option => option.value === gender)}
             onChange={(newValue) => setGender(newValue ? newValue.value : '')}
             placeholder="Select gender"
+            required
             className="w-full border-[#4B00828C]"
             styles={{
               control: (base) => ({
@@ -165,17 +169,24 @@ function Page() {
           />
         </div>
 
-        <div className="flex flex-col space-y-2">
+        <div className="flex flex-col space-y-2 mt-4">
           <label className="text-x3 font-bold text-[#4B0082]" htmlFor="university">
             University
           </label>
-          <input
-            type="text"
+          <Select
             id="university"
-            placeholder="Enter your university"
-            className="border rounded-md p-2 text-sm w-full border-[#4B00828C]"
-            value={university}
-            onChange={(e) => setUniversity(e.target.value)}
+            options={universityOptions}
+            value={universityOptions.find(option => option.value === university)}
+            onChange={(newValue) => setUniversity(newValue ? newValue.value : '')}
+            placeholder="Select university"
+            required
+            className="w-full border-[#4B00828C]"
+            styles={{
+              control: (base) => ({
+                ...base,
+                borderColor: "#4B00828C",
+              }),
+            }}
           />
         </div>
 
@@ -188,6 +199,7 @@ function Page() {
             id="startYear"
             className="border rounded-md p-2 text-sm w-full border-[#4B00828C]"
             value={startYear}
+            required
             onChange={(e) => setStartYear(e.target.value)}
           />
         </div>
@@ -201,6 +213,7 @@ function Page() {
             id="endYear"
             className="border rounded-md p-2 text-sm w-full border-[#4B00828C]"
             value={endYear}
+            required
             onChange={(e) => setEndYear(e.target.value)}
           />
         </div>
@@ -215,6 +228,7 @@ function Page() {
             placeholder="Enter your language"
             className="border rounded-md p-2 text-sm w-full border-[#4B00828C]"
             value={language}
+            required
             onChange={(e) => setLanguage(e.target.value)}
           />
         </div>
@@ -228,6 +242,7 @@ function Page() {
             options={majorOptions}
             onChange={(newValue) => setMajor(newValue ? newValue.value : '')}
             placeholder="Select major"
+            required
             className="w-full border-[#4B00828C]"
             styles={{
               control: (base) => ({
@@ -247,6 +262,7 @@ function Page() {
             options={countryOptions}
             onChange={(newValue) => setCountry(newValue ? newValue.value : '')}
             placeholder="Select country"
+            required
             className="w-full border-[#4B00828C]"
             styles={{
               control: (base) => ({
@@ -267,6 +283,7 @@ function Page() {
             value={foodOptions.find(option => option.value === foodPreference)}
             onChange={(newValue) => setFoodPreference(newValue ? newValue.value : '')}
             placeholder="Select food preference"
+            required
             className="w-full border-[#4B00828C]"
             styles={{
               control: (base) => ({
@@ -287,6 +304,7 @@ function Page() {
             value={smokeOptions.find(option => option.value === smoke)}
             onChange={(newValue) => setSmoke(newValue ? newValue.value : '')}
             placeholder="Do you smoke?"
+            required
             className="w-full border-[#4B00828C]"
             styles={{
               control: (base) => ({
@@ -307,6 +325,7 @@ function Page() {
             value={drinkOptions.find(option => option.value === drink)}
             onChange={(newValue) => setDrink(newValue ? newValue.value : '')}
             placeholder="Do you drink?"
+            required
             className="w-full border-[#4B00828C]"
             styles={{
               control: (base) => ({
@@ -327,6 +346,7 @@ function Page() {
             value={expenditureOptions.find(option => option.value === expenditure)}
             onChange={(newValue) => setExpenditure(newValue ? newValue.value : '')}
             placeholder="How do you spend?"
+            required
             className="w-full border-[#4B00828C]"
             styles={{
               control: (base) => ({
@@ -347,6 +367,7 @@ function Page() {
             value={houseAmbianceOptions.find(option => option.value === houseAmbiance)}
             onChange={(newValue) => setHouseAmbiance(newValue ? newValue.value : '')}
             placeholder="Describe your house ambiance"
+            required
             className="w-full border-[#4B00828C]"
             styles={{
               control: (base) => ({
@@ -367,6 +388,7 @@ function Page() {
             value={tidinessOptions.find(option => option.value === tidiness)}
             onChange={(newValue) => setTidiness(newValue ? newValue.value : '')}
             placeholder="How tidy are you?"
+            required
             className="w-full border-[#4B00828C]"
             styles={{
               control: (base) => ({
@@ -387,6 +409,7 @@ function Page() {
             value={socializingOptions.find(option => option.value === socializing)}
             onChange={(newValue) => setSocializing(newValue ? newValue.value : '')}
             placeholder="How often do you socialize?"
+            required
             className="w-full border-[#4B00828C]"
             styles={{
               control: (base) => ({
@@ -406,6 +429,7 @@ function Page() {
             placeholder="Tell us about yourself (250 words max)"
             className="border rounded-md p-2 text-sm w-full border-[#4B00828C] h-24 resize-none"
             value={aboutYourself}
+            required
             onChange={handleTextChange}
             rows={3}
           />

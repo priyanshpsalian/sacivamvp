@@ -9,7 +9,7 @@ type TimeLeft = {
 };
 
 const calculateTimeLeft = (): TimeLeft => {
-  const difference = +new Date("2024-08-25") - +new Date();
+  const difference = +new Date("2024-09-25") - +new Date();
   let timeLeft: TimeLeft = {
     days: 0,
     hours: 0,
