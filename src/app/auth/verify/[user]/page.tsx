@@ -27,9 +27,8 @@ function Page() { // Rename the function to start with an uppercase letter
 
     async function verifyOTP() {
         try {
-            const response = await axios.post("/api/auth/verify", {
-                email: userMail,
-                otp: parseInt(value),
+            const response = await axios.post(`https://sacivaauthservice.onrender.com/api/v1/verify/${userMail}`, {
+                otp: value,
             });
 
             if (response) {

@@ -1,7 +1,12 @@
 "use client"
+import axios from 'axios';
+import { useParams } from 'next/navigation';
 import React, { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function Survey() {
+  const Router = useRouter();
+  const params = useParams()
   const [universityName, setUniversityName] = useState('');
   const [cityName, setCityName] = useState('');
   const [experience, setExperience] = useState('');
@@ -11,6 +16,8 @@ export default function Survey() {
     cityName: '',
     experience: ''
   });
+  const userId = params.user;
+  let email = Array.isArray(userId) ? userId.join('').replace("%40", "@") : userId?.replace("%40", "@");
 
   const validateForm = () => {
     let valid = true;
@@ -35,11 +42,21 @@ export default function Survey() {
     return valid;
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (validateForm()) {
       // Submit form logic here
+      const response = await axios.post("https://sacivauserservice.onrender.com/api/v1/survery", {
+        email,
+        universityexp: universityName,
+        majorexp: experience,
+        cityexp: cityName
+      })
       console.log({ universityName, cityName, experience });
+      if (response.status == 200) {
+        Router.push("/buffer")
+
+      }
     }
   };
 
@@ -47,7 +64,7 @@ export default function Survey() {
     <div className="min-h-screen bg-royal-purple flex items-center justify-center py-10 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full bg-lavender shadow-lg rounded-lg p-8">
         <h2 className="mb-6 text-3xl font-extrabold text-center text-indigoCustom">
-        Survey of Experience
+          Survey of Experience
         </h2>
         <form className="space-y-6" onSubmit={handleSubmit}>
           <div>
@@ -61,9 +78,8 @@ export default function Survey() {
               value={universityName}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => setUniversityName(e.target.value)}
               required
-              className={`mt-1 block w-full px-3 py-2 border ${
-                errors.universityName ? 'border-red-500' : 'border-gray-300'
-              } rounded-md shadow-sm focus:outline-none focus:ring-lavender focus:border-lavender sm:text-sm`}
+              className={`mt-1 block w-full px-3 py-2 border ${errors.universityName ? 'border-red-500' : 'border-gray-300'
+                } rounded-md shadow-sm focus:outline-none focus:ring-lavender focus:border-lavender sm:text-sm`}
               placeholder="Enter your university name"
             />
             {errors.universityName && (
@@ -82,9 +98,8 @@ export default function Survey() {
               value={cityName}
               onChange={(e: React.ChangeEvent<HTMLInputElement>) => setCityName(e.target.value)}
               required
-              className={`mt-1 block w-full px-3 py-2 border ${
-                errors.cityName ? 'border-red-500' : 'border-gray-300'
-              } rounded-md shadow-sm focus:outline-none focus:ring-lavender focus:border-lavender sm:text-sm`}
+              className={`mt-1 block w-full px-3 py-2 border ${errors.cityName ? 'border-red-500' : 'border-gray-300'
+                } rounded-md shadow-sm focus:outline-none focus:ring-lavender focus:border-lavender sm:text-sm`}
               placeholder="Enter your city name"
             />
             {errors.cityName && (
@@ -94,33 +109,43 @@ export default function Survey() {
 
           <div>
             <label htmlFor="experience" className="block text-sm font-medium text-gray-100">
-                City Experience
+              City Experience
             </label>
             <textarea
-                id="experience"
-                name="experience"
-                rows={4} // This must be a number, not a string
-                value={experience}
-                onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setExperience(e.target.value)}
-                required
-                className={`mt-1 block w-full h-48 px-3 py-2 border ${
-                errors.experience ? 'border-red-500' : 'border-gray-300'
+              id="experience"
+              name="experience"
+              rows={4} // This must be a number, not a string
+              value={experience}
+              onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => setExperience(e.target.value)}
+              required
+              className={`mt-1 block w-full h-48 px-3 py-2 border ${errors.experience ? 'border-red-500' : 'border-gray-300'
                 } rounded-md shadow-sm focus:outline-none focus:ring-lavender focus:border-lavender sm:text-sm resize-none`}
-                placeholder="Share your experience"
+              placeholder="Share your experience"
             />
             {errors.experience && (
-                <p className="mt-2 text-sm text-red-600">{errors.experience}</p>
+              <p className="mt-2 text-sm text-red-600">{errors.experience}</p>
             )}
+          </div>
+
+          <div className='flex flex-row gap-5 items-center justify-center'>
+            <div>
+              <button
+              onClick={()=>Router.push("/buffer")}
+                type="submit"
+                className=" flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigoCustom hover:bg-royal-purple focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo"
+              >
+                Skip
+              </button>
             </div>
 
-
-          <div>
-            <button
-              type="submit"
-              className="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigoCustom hover:bg-royal-purple focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo"
-            >
-              Submit
-            </button>
+            <div>
+              <button
+                type="submit"
+                className=" flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigoCustom hover:bg-royal-purple focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo"
+              >
+                Submit
+              </button>
+            </div>
           </div>
         </form>
       </div>

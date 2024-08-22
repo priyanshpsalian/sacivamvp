@@ -27,7 +27,7 @@ export default function SignUp() {
             if (email.includes('.edu')) {
                 if (password === confirmpassword) {
                     setLoading(true);
-                    const response = await axios.post("/api/auth/signup", {
+                    const response = await axios.post("https://sacivaauthservice.onrender.com/api/v1/signup", {
                         email,
                         password
                     });
