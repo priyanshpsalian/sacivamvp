@@ -376,6 +376,7 @@ import { useEffect, useState } from "react";
 interface User {
   age?: number;
   name?: string;
+  major?:string,
   language?: string;
   country?: string;
   university?: string;
@@ -401,6 +402,7 @@ const FindRoommatesPage = () => {
         name: "Anonymous Girl",
         university: "DePaul University",
         country: "India",
+        major:"Computer Science",
         startDate: "2023",
         endDate: "2025",
         about: "I am a hardcore nerd.",
@@ -414,6 +416,7 @@ const FindRoommatesPage = () => {
         age: 25,
         gender: "Male",
         language: "Telugu",
+        major:"Computer Science",
         university: "DePaul University",
         country: "India",
         startDate: "2023",
@@ -518,7 +521,10 @@ const FindRoommatesPage = () => {
     <div className="p-4 sm:p-6 font-sans">
       <div className="relative my-4 sm:my-6">
         <div className="overflow-x-auto scrollbar-hide">
-          <div id="scrollContainer" className="flex gap-2 whitespace-nowrap px-10">
+          <div
+            id="scrollContainer"
+            className="flex gap-2 whitespace-nowrap px-10"
+          >
             {[
               "Country",
               "Language",
@@ -558,10 +564,11 @@ const FindRoommatesPage = () => {
             >
               &times;
             </button>
+            <div className="bg-purple-600 shadow-md text-white rounded-lg p-4 mb-4">
             <div className="flex items-center space-x-4 mb-4">
               <Image
-                src={selectedUser.avatar || '/default-avatar.png'}
-                alt={selectedUser.name || 'User'}
+                src={selectedUser.avatar || "/default-avatar.png"}
+                alt={selectedUser.name || "User"}
                 width={100}
                 height={100}
                 className="w-16 h-16 sm:w-24 sm:h-24 rounded-full"
@@ -569,22 +576,37 @@ const FindRoommatesPage = () => {
               <div className="flex-1">
                 <h3 className="text-2xl font-bold">{selectedUser.name}</h3>
                 <div className="flex space-x-2 mt-2">
-                  {selectedUser.age && <p className="text-base">{selectedUser.age} |</p>}
-                  {selectedUser.language && <p className="text-base">{selectedUser.language} |</p>}
-                  <p className="text-base">{selectedUser.country}</p>
+                  {selectedUser.age && (
+                    <p className="text-base">{selectedUser.age} |</p>
+                  )}
+                  {selectedUser.language && (
+                    <p className="text-base">{selectedUser.language} |</p>
+                  )}
+                  <p className="text-base">{selectedUser.country} |</p>
+                  <p className="text-base">{selectedUser.gender}</p>
                 </div>
               </div>
             </div>
+            </div>
             <p className="text-lg font-semibold mt-4">Currently Pursuing:</p>
-            <p className="text-xl font-light">Masters Degree at {selectedUser.university}</p>
+            <p className="text-xl font-light">
+              Masters Degree in {selectedUser.major} at{" "}
+              {selectedUser.university}
+            </p>
             <p className="text-sm mt-2">
-              from <span className="font-bold">{selectedUser.startDate}</span> till <span className="font-bold">{selectedUser.endDate}</span>
+              from <span className="font-bold">{selectedUser.startDate}</span>{" "}
+              till <span className="font-bold">{selectedUser.endDate}</span>
             </p>
             <div className="mt-4">
               <p className="text-lg font-semibold">Preferences:</p>
               <div className="flex flex-wrap gap-2 mt-2">
                 {selectedUser.preferences?.map((preference, index) => (
-                  <span key={index} className="bg-purple-200 px-3 py-1 rounded text-xs sm:text-sm">{preference}</span>
+                  <span
+                    key={index}
+                    className="bg-purple-200 px-3 py-1 rounded text-xs sm:text-sm"
+                  >
+                    {preference}
+                  </span>
                 ))}
               </div>
             </div>
