@@ -11,7 +11,7 @@ import {
 
 function scrollLeft() {
   const container = document.getElementById("scrollContainer");
-  container.scrollBy({
+  container?.scrollBy({
     left: -150, // Adjust this value to control the scroll distance
     behavior: "smooth",
   });
@@ -19,7 +19,7 @@ function scrollLeft() {
 
 function scrollRight() {
   const container = document.getElementById("scrollContainer");
-  container.scrollBy({
+  container?.scrollBy({
     left: 150, // Adjust this value to control the scroll distance
     behavior: "smooth",
   });
@@ -31,6 +31,7 @@ export default function RoommateFinder() {
   const users = [
     {
       name: "Anonymous Girl",
+      age:12,
       university: "DePaul University",
       country: "India",
       startDate: "2023",
@@ -66,7 +67,7 @@ export default function RoommateFinder() {
   ];
 
   const [selectedUser, setSelectedUser] = useState(null);
-    const openModal = (users) => {
+    const openModal = (users:any) => {
       setSelectedUser(users);
     };
 
