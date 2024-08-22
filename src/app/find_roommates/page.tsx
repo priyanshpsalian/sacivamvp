@@ -32,6 +32,7 @@ export default function RoommateFinder() {
     {
       name: "Anonymous Girl",
       university: "DePaul University",
+      major: "Computer Science",
       country: "India",
       startDate: "2023",
       endDate: "2025",
@@ -47,6 +48,7 @@ export default function RoommateFinder() {
       gender: "Male", // Added gender field
       language: "Telugu",
       university: "DePaul University",
+      major: "Computer Science",
       country: "India",
       startDate: "2023",
       endDate: "2025",
@@ -107,7 +109,7 @@ export default function RoommateFinder() {
     });
 
   return (
-    <div className="p-4 sm:p-6 font-sans">
+    <div className="p-1 sm:p-4 font-sans">
       <div className="relative my-4 sm:my-6">
         {/* <button
           className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full"
@@ -119,76 +121,76 @@ export default function RoommateFinder() {
         <div className="overflow-x-auto scrollbar-hide">
           <div
             id="scrollContainer"
-            className="flex gap-2 whitespace-nowrap px-10"
+            className="flex gap-2 whitespace-nowrap px-7"
           >
             <button
-              className="bg-purple-200 px-3 py-2 rounded text-xs sm:text-sm"
+              className="bg-purple-200 px-3 py-3 rounded-xl text-xs sm:text-sm"
               onClick={() => setSelectedFilter("Country")}
             >
               Country
             </button>
             <button
-              className="bg-purple-200 px-3 py-2 rounded text-xs sm:text-sm"
+              className="bg-purple-200 px-3 py-2 rounded-xl text-xs sm:text-sm"
               onClick={() => setSelectedFilter("Language")}
             >
               Language
             </button>
             <button
-              className="bg-purple-200 px-3 py-2 rounded text-xs sm:text-sm"
+              className="bg-purple-200 px-3 py-2 rounded-xl text-xs sm:text-sm"
               onClick={() => setSelectedFilter("University")}
             >
               University
             </button>
             <button
-              className="bg-purple-200 px-3 py-2 rounded text-xs sm:text-sm"
+              className="bg-purple-200 px-3 py-2 rounded-xl text-xs sm:text-sm"
               onClick={() => setSelectedFilter("Food")}
             >
               Food
             </button>
             <button
-              className="bg-purple-200 px-3 py-2 rounded text-xs sm:text-sm"
+              className="bg-purple-200 px-3 py-2 rounded-xl text-xs sm:text-sm"
               onClick={() => setSelectedFilter("Smoke")}
             >
               Smoke
             </button>
             <button
-              className="bg-purple-200 px-3 py-2 rounded text-xs sm:text-sm"
+              className="bg-purple-200 px-3 py-2 rounded-xl text-xs sm:text-sm"
               onClick={() => setSelectedFilter("Gender")}
             >
               Gender
             </button>
             <button
-              className="bg-purple-200 px-3 py-2 rounded text-xs sm:text-sm"
+              className="bg-purple-200 px-3 py-2 rounded-xl text-xs sm:text-sm"
               onClick={() => setSelectedFilter("Drink")}
             >
               Drink
             </button>
             <button
-              className="bg-purple-200 px-3 py-2 rounded text-xs sm:text-sm"
+              className="bg-purple-200 px-3 py-2 rounded-xl text-xs sm:text-sm"
               onClick={() => setSelectedFilter("Expenditure")}
             >
               Expenditure
             </button>
             <button
-              className="bg-purple-200 px-3 py-2 rounded text-xs sm:text-sm"
+              className="bg-purple-200 px-3 py-2 rounded-xl text-xs sm:text-sm"
               onClick={() => setSelectedFilter("Tidiness")}
             >
               Tidiness
             </button>
             <button
-              className="bg-purple-200 px-3 py-2 rounded text-xs sm:text-sm"
+              className="lightPurple px-3 py-2 rounded-xl text-xs sm:text-sm"
               onClick={() => setSelectedFilter("Volume")}
             >
               Volume
             </button>
             <button
-              className="bg-purple-200 px-3 py-2 rounded text-xs sm:text-sm"
+              className="bg-purple-200 px-3 py-2 rounded-xl text-xs sm:text-sm"
               onClick={() => setSelectedFilter("Socializing")}
             >
               Socializing
             </button>
             <button
-              className="bg-purple-200 px-3 py-2 rounded text-xs sm:text-sm"
+              className="bg-purple-200 px-3 py-2 rounded-xl text-xs sm:text-sm"
               onClick={() => setSelectedFilter("Age")}
             >
               Age
@@ -210,7 +212,7 @@ export default function RoommateFinder() {
           {filteredUsers.map((user, index) => (
             <div
               key={index}
-              className="bg-purple-100 p-4 sm:p-5 rounded-lg text-center cursor-pointer flex items-center justify-between"
+              className="bg-purple-100 p-4 md:p-2 rounded-xl text-center cursor-pointer flex items-center justify-between"
               onClick={() => openModal(user)}
             >
               <div className="flex items-center">
@@ -247,18 +249,20 @@ export default function RoommateFinder() {
               >
                 &times;
               </button>
-              <div className="flex items-center space-x-4 mb-4">
-                <img
-                  src={selectedUser.avatar}
-                  alt={selectedUser.name}
-                  className="w-16 h-16 sm:w-24 sm:h-24 rounded-full"
-                />
-                <div className="flex-1">
-                  <h3 className="text-2xl font-bold">{selectedUser.name}</h3>
-                  <div className="flex space-x-2 mt-2">
-                    <p className="text-base">{selectedUser.age} |</p>
-                    <p className="text-base">{selectedUser.language} |</p>
-                    <p className="text-base">{selectedUser.country}</p>
+              <div className="bg-purple-600 text-white shadow-md rounded-lg p-4 mb-4">
+                <div className="flex items-center space-x-4 mb-4">
+                  <img
+                    src={selectedUser.avatar}
+                    alt={selectedUser.name}
+                    className="w-16 h-16 sm:w-24 sm:h-24 rounded-full"
+                  />
+                  <div className="flex-1">
+                    <h3 className="text-2xl font-bold">{selectedUser.name}</h3>
+                    <div className="flex space-x-2 mt-2">
+                      <p className="text-base">{selectedUser.age} |</p>
+                      <p className="text-base">{selectedUser.language} |</p>
+                      <p className="text-base">{selectedUser.country}</p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -278,39 +282,67 @@ export default function RoommateFinder() {
                 <div className="flex flex-wrap gap-2 mt-2">
                   {selectedUser.preferences.includes("Vegetarian") && (
                     <div className="px-3 py-1 bg-gray-200 rounded-full">
-                      Vegetarian
+                      ☘️ Vegetarian
                     </div>
                   )}
-                  {selectedUser.preferences.includes("Doesn't Drink") && (
+                  {selectedUser.preferences.includes("Vegan") && (
                     <div className="px-3 py-1 bg-gray-200 rounded-full">
-                      Doesn't Drink
+                      🥑 Vegan
+                    </div>
+                  )}
+                  {selectedUser.preferences.includes("Eggitarian") && (
+                    <div className="px-3 py-1 bg-gray-200 rounded-full">
+                      🥚 Eggitarian
+                    </div>
+                  )}
+                  {selectedUser.preferences.includes("Eats Meat") && (
+                    <div className="px-3 py-1 bg-gray-200 rounded-full">
+                      🍖 Eats Meat
                     </div>
                   )}
                   {selectedUser.preferences.includes("Doesn't Smoke") && (
                     <div className="px-3 py-1 bg-gray-200 rounded-full">
-                      Doesn't Smoke
+                      🚭 Doesn't Smoke
                     </div>
                   )}
-                  {selectedUser.preferences.includes("Socializes Less") && (
+                  {selectedUser.preferences.includes("Doesn't Drink") && (
                     <div className="px-3 py-1 bg-gray-200 rounded-full">
-                      Socializes Less
+                      💧 Doesn't Drink
+                    </div>
+                  )}
+                  {selectedUser.preferences.includes("Quiet Ambiance") && (
+                    <div className="px-3 py-1 bg-gray-200 rounded-full">
+                      🎧 Quiet Ambiance
+                    </div>
+                  )}
+                  {selectedUser.preferences.includes("Music") && (
+                    <div className="px-3 py-1 bg-gray-200 rounded-full">
+                      🔊 Music
+                    </div>
+                  )}
+                  {selectedUser.preferences.includes("Socializes") && (
+                    <div className="px-3 py-1 bg-gray-200 rounded-full">
+                      🥳 Socializes
+                    </div>
+                  )}
+                  {selectedUser.preferences.includes("Solitude") && (
+                    <div className="px-3 py-1 bg-gray-200 rounded-full">
+                      🧘 Solitude
                     </div>
                   )}
                   {selectedUser.preferences.includes("Spends Frugally") && (
                     <div className="px-3 py-1 bg-gray-200 rounded-full">
-                      Spends Frugally
+                      💲 Spends Frugally
                     </div>
                   )}
                   {selectedUser.preferences.includes("Strictly Tidy") && (
                     <div className="px-3 py-1 bg-gray-200 rounded-full">
-                      Strictly Tidy
+                      ✨ Strictly Tidy
                     </div>
                   )}
-                  {selectedUser.preferences.includes(
-                    "Likes Quiet Ambiance"
-                  ) && (
+                  {selectedUser.preferences.includes("Flexible") && (
                     <div className="px-3 py-1 bg-gray-200 rounded-full">
-                      Likes Quiet Ambiance
+                      🧺 Flexible
                     </div>
                   )}
                 </div>
