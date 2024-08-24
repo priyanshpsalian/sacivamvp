@@ -1,6 +1,5 @@
 'use client'
 
-import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
@@ -53,10 +52,10 @@ export default function Navbar() {
           </button>
             </Link>
         </div>
-        <div className="lg:hidden">
+        {/* <div className="lg:hidden">
           <Menu onClick={toggleMenu} className="h-6 w-6 cursor-pointer" />
-        </div>
-        {isMenuOpen && (
+        </div> */}
+        {/* {isMenuOpen && (
           <div className="absolute inset-x-0 top-0 z-50 origin-top-right transform p-2 transition lg:hidden">
             <div className="divide-y-2 divide-gray-50 rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5">
               <div className="px-5 pb-6 pt-5">
@@ -86,11 +85,11 @@ export default function Navbar() {
                   </Link>
                 {/* <Modal open={open} onClose={onCloseModal} center>
                   <SignUp/>
-                </Modal> */}
+                </Modal> 
               </div>
             </div>
           </div>
-        )}
+        )} */}
       </div>
     </div>
   );
