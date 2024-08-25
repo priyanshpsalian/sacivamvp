@@ -1,3 +1,4 @@
+
 const countryOptions = [
   { value: 'Afghanistan', label: 'Afghanistan' },
   { value: 'Albania', label: 'Albania' },
@@ -223,8 +224,8 @@ const countryOptions = [
     
   ];
   const universityOptions = [
-    { "value": "ADVENTHEALTH UNIVERSITY", "label": "ADVENTHEALTH UNIVERSITY" },
-  { "value": "STRAYER UNIVERSITY-PENNSYLVANIA", "label": "STRAYER UNIVERSITY-PENNSYLVANIA" },
+    { "value": {"value": "ADVENTHEALTH UNIVERSITY", "cluster": "1"}, "label": "ADVENTHEALTH UNIVERSITY" },
+  { "value": "STRAYER UNIVERSITY-PENNSYLVANIA", "label": "STRAYER UNIVERSITY-PENNSYLVANIA"},
   { "value": "CENTRAL YESHIVA BETH JOSEPH", "label": "CENTRAL YESHIVA BETH JOSEPH" },
   { "value": "CHAMBERLAIN UNIVERSITY-OHIO", "label": "CHAMBERLAIN UNIVERSITY-OHIO" },
   { "value": "UNITED THEOLOGICAL SEMINARY", "label": "UNITED THEOLOGICAL SEMINARY" },
