@@ -1,5 +1,11 @@
 import Image from 'next/image'
-
+import {
+  ChatIcon,
+  HomeIcon,
+  SearchIcon,
+  ShoppingCartIcon,
+  ViewGridIcon,
+} from "@heroicons/react/outline";
 export default function Marketplace() { 
   return (
     <div className="mx-auto grid w-full max-w-7xl items-center space-y-4 px-2 py-10 md:grid-cols-2 md:gap-6 md:space-y-0 lg:grid-cols-4">
@@ -15,9 +21,12 @@ export default function Marketplace() {
             objectFit="cover"
           />
           <div className="p-4">
-            <h1 className="inline-flex items-center text-lg font-semibold">Nike Airmax v2</h1>
+            <h1 className="inline-flex items-center text-lg font-semibold">
+              Nike Airmax v2
+            </h1>
             <p className="mt-3 text-sm text-gray-600">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi, debitis?
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Excepturi, debitis?
             </p>
             <div className="mt-4">
               <span className="mb-2 mr-2 inline-block rounded-full bg-gray-100 px-3 py-1 text-[10px] font-semibold text-gray-900">
@@ -57,6 +66,32 @@ export default function Marketplace() {
           </div>
         </div>
       ))}
+      <header className="bg-purple-800 text-white py-3 fixed bottom-0 inset-x-0">
+        <nav>
+          <ul className="flex justify-around items-center text-sm sm:text-base">
+            <li className="cursor-pointer flex flex-col items-center">
+              <ViewGridIcon className="w-8 h-8" />
+              <span>Dashboard</span>
+            </li>
+            <li className="cursor-pointer flex flex-col items-center">
+              <SearchIcon className="w-8 h-8" />
+              <span>Find</span>
+            </li>
+            <li className="cursor-pointer flex flex-col items-center">
+              <HomeIcon className="w-8 h-8" />
+              <span>My House</span>
+            </li>
+            <li className="cursor-pointer flex flex-col items-center">
+              <ChatIcon className="w-8 h-8" />
+              <span>Chats</span>
+            </li>
+            <li className="cursor-pointer flex flex-col items-center">
+              <ShoppingCartIcon className="w-8 h-8" />
+              <span>Marketplace</span>
+            </li>
+          </ul>
+        </nav>
+      </header>
     </div>
-  )
+  );
 }
