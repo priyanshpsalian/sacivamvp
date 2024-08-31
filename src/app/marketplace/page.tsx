@@ -1,97 +1,96 @@
-import Image from 'next/image'
-import {
-  ChatIcon,
-  HomeIcon,
-  SearchIcon,
-  ShoppingCartIcon,
-  ViewGridIcon,
-} from "@heroicons/react/outline";
-export default function Marketplace() { 
+
+"use client";
+
+import Image from 'next/image';
+import { useState } from 'react';
+
+export default function Marketplace() {
+  const [selectedCategory, setSelectedCategory] = useState<string>('');
+  const [selectedSubcategory, setSelectedSubcategory] = useState<string>('');
+  const [priceRange, setPriceRange] = useState<number[]>([0, 1000]);
+
+  // Define the categories as a Record<string, string[]>
+  const categories: Record<string, string[]> = {
+    Apparel: ['Accessories', 'Bags', 'Clothing', 'Jewelry', 'Makeup', 'Footwear'],
+    Electronics: ['Accessories', 'Drives & Storage', 'Phones', 'Tablets', 'Laptops', 'Earphones', 'Monitors', 'Speakers', 'Cameras', 'TVs', 'Misc'],
+    FoodAndGrocery: [],
+    HomeGoods: ['Tools', 'Kitchen Utensils', 'Toiletries'],
+    Furniture: ['Tables', 'Chairs', 'Closets', 'Couches', 'Carpets & Rugs', 'Lamps', 'Beds', 'Mattresses', 'Desks', 'Dressers', 'Storage & Organizers', 'Kitchen Furniture Sets', 'Living Room Furniture Sets', 'Misc'],
+    Creative: ['Art Equipment', 'Musical Instruments', 'Misc'],
+    FitnessEquipment: [],
+    OfficeSupplies: [],
+    PetSupplies: [],
+    SportingGoods: [],
+    ToysAndGames: [],
+    Vehicles: []
+  };
+
+  const handleCategoryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedCategory(event.target.value);
+    setSelectedSubcategory('');  // Reset subcategory on category change
+  };
+
+  const handleSubcategoryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedSubcategory(event.target.value);
+  };
+
+  const handlePriceChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setPriceRange([0, Number(event.target.value)]);
+  };
+
   return (
-    <div className="mx-auto grid w-full max-w-7xl items-center space-y-4 px-2 py-10 md:grid-cols-2 md:gap-6 md:space-y-0 lg:grid-cols-4">
-      {Array.from({ length: 4 }).map((_, i) => (
-        <div key={i} className="rounded-md border">
-          <Image
-            src="https://images.unsplash.com/photo-1588099768523-f4e6a5679d88?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8NHwxMTM4MTU1NXx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60"
-            alt="Laptop"
-            className="aspect-[16/9] w-full rounded-md md:aspect-auto md:h-[300px] lg:h-[200px]"
-            width={800}
-            height={450}
-            layout="responsive"
-            objectFit="cover"
-          />
-          <div className="p-4">
-            <h1 className="inline-flex items-center text-lg font-semibold">
-              Nike Airmax v2
-            </h1>
-            <p className="mt-3 text-sm text-gray-600">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Excepturi, debitis?
-            </p>
-            <div className="mt-4">
-              <span className="mb-2 mr-2 inline-block rounded-full bg-gray-100 px-3 py-1 text-[10px] font-semibold text-gray-900">
-                #Sneakers
-              </span>
-              <span className="mb-2 mr-2 inline-block rounded-full bg-gray-100 px-3 py-1 text-[10px] font-semibold text-gray-900">
-                #Nike
-              </span>
-              <span className="mb-2 mr-2 inline-block rounded-full bg-gray-100 px-3 py-1 text-[10px] font-semibold text-gray-900">
-                #Airmax
-              </span>
-            </div>
-            <div className="mt-3 flex items-center space-x-2">
-              <span className="block text-sm font-semibold">Colors : </span>
-              <span className="block h-4 w-4 rounded-full border-2 border-gray-300 bg-red-400"></span>
-              <span className="block h-4 w-4 rounded-full border-2 border-gray-300 bg-purple-400"></span>
-              <span className="block h-4 w-4 rounded-full border-2 border-gray-300 bg-orange-400"></span>
-            </div>
-            <div className="mt-5 flex items-center space-x-2">
-              <span className="block text-sm font-semibold">Size : </span>
-              <span className="block cursor-pointer rounded-md border border-gray-300 p-1 px-2 text-xs font-medium">
-                8 UK
-              </span>
-              <span className="block cursor-pointer rounded-md border border-gray-300 p-1 px-2 text-xs font-medium">
-                9 UK
-              </span>
-              <span className="block cursor-pointer rounded-md border border-gray-300 p-1 px-2 text-xs font-medium">
-                10 UK
-              </span>
-            </div>
-            <button
-              type="button"
-              className="mt-4 w-full rounded-sm bg-black px-2 py-1.5 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-            >
-              Add to Cart
-            </button>
-          </div>
+    <div className="mx-auto max-w-7xl px-2 py-10">
+      {/* Filters */}
+      <div className="mb-6 grid grid-cols-2 gap-4">
+        {/* Category Filter */}
+        <div>
+          <label className="block mb-2 text-sm font-medium text-gray-700">Category</label>
+          <select
+            value={selectedCategory}
+            onChange={handleCategoryChange}
+            className="block w-full p-2 border border-gray-300 rounded-md"
+          >
+            <option value="">Select Category</option>
+            {Object.keys(categories).map((category) => (
+              <option key={category} value={category}>
+                {category.replace(/([A-Z])/g, ' $1').trim()}
+              </option>
+            ))}
+          </select>
         </div>
-      ))}
-      <header className="bg-purple-800 text-white py-3 fixed bottom-0 inset-x-0">
-        <nav>
-          <ul className="flex justify-around items-center text-sm sm:text-base">
-            <li className="cursor-pointer flex flex-col items-center">
-              <ViewGridIcon className="w-8 h-8" />
-              <span>Dashboard</span>
-            </li>
-            <li className="cursor-pointer flex flex-col items-center">
-              <SearchIcon className="w-8 h-8" />
-              <span>Find</span>
-            </li>
-            <li className="cursor-pointer flex flex-col items-center">
-              <HomeIcon className="w-8 h-8" />
-              <span>My House</span>
-            </li>
-            <li className="cursor-pointer flex flex-col items-center">
-              <ChatIcon className="w-8 h-8" />
-              <span>Chats</span>
-            </li>
-            <li className="cursor-pointer flex flex-col items-center">
-              <ShoppingCartIcon className="w-8 h-8" />
-              <span>Marketplace</span>
-            </li>
-          </ul>
-        </nav>
-      </header>
+
+        {/* Subcategory Filter */}
+        {selectedCategory && categories[selectedCategory].length > 0 && (
+          <div>
+            <label className="block mb-2 text-sm font-medium text-gray-700">Subcategory</label>
+            <select
+              value={selectedSubcategory}
+              onChange={handleSubcategoryChange}
+              className="block w-full p-2 border border-gray-300 rounded-md"
+            >
+              <option value="">Select Subcategory</option>
+              {categories[selectedCategory].map((subcategory: string) => (
+                <option key={subcategory} value={subcategory}>
+                  {subcategory}
+                </option>
+              ))}
+            </select>
+          </div>
+        )}
+
+        {/* Price Range Filter */}
+        <div className="col-span-2">
+          <label className="block mb-2 text-sm font-medium text-gray-700">Price Range (up to ${priceRange[1]})</label>
+          <input
+            type="range"
+            min="0"
+            max="1000"
+            value={priceRange[1]}
+            onChange={handlePriceChange}
+            className="block w-full"
+          />
+        </div>
+
     </div>
   );
 }

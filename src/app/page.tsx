@@ -1,5 +1,6 @@
 "use client"
 
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react';
@@ -7,7 +8,6 @@ import { Modal } from 'react-responsive-modal';
 import 'react-responsive-modal/styles.css';
 import { FooterTwo } from './../components/Footer/footer';
 import SignUp from './auth/signup/page';
-import dynamic from 'next/dynamic';
 
 const Sacivap5js = dynamic(() => import('@/components/p5js/saciva'), { ssr: false });
 
@@ -18,10 +18,12 @@ const Page: React.FC = () => {
   const onOpenModal = () => setOpen(true);
   const onCloseModal = () => setOpen(false);
   return (
-    <div className="flex flex-col items-center justify-center bg-[#f6f6f6] ">
+    // <div className="flex flex-col items-center justify-center bg-[#f6f6f6] ">
       
-      <div className="shadow-xl  w-full">
-        
+    //   <div className="shadow-xl  w-full">
+    <div className={`flex flex-col items-center justify-center bg-[#f6f6f6] ${open ? 'blur-md' : ''}`}>
+
+    <div className="shadow-xl w-full">
         <header className="text-center mb-8">
           <div className='flex flex-col overflow-y-hidden items-center justify-center  overflow-x-hidden'>
             <Sacivap5js/>
@@ -66,10 +68,28 @@ const Page: React.FC = () => {
           >
             Join the Network for Free
           </button>
-          <Modal open={open} onClose={onCloseModal} center>
+          {/* <Modal open={open} onClose={onCloseModal} center>
+            <SignUp />
+          </Modal> */}
+          <Modal
+            open={open}
+            onClose={onCloseModal}
+            center
+            styles={{
+              overlay: {
+                backgroundColor: 'transparent',
+              },
+              modal: {
+                backgroundColor: 'transparent',
+                boxShadow: 'none',
+                padding: '0',
+              },
+            }}
+          >
             <SignUp />
           </Modal>
-          {/* </Link> */}
+
+      
         </header>
 
         <p
@@ -124,7 +144,7 @@ const Page: React.FC = () => {
             </div>
             <div className="border border-purple-600 rounded-lg p-6 text-center flex flex-col items-center hover:shadow-lg transition duration-300 w-full md:w-1/3 max-w-xs mx-auto md:mx-0">
               <Image
-                src="https://s3-alpha-sig.figma.com/img/af3a/920b/78015185d33134e625313908e60283b8?Expires=1722211200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=k8~iUkxOeqNURZCHRNvB7uHeaDGGnWDWBsNCs2F7b-xlFIAfZKaGOQ2d9UaGgTlpxQk4fD8kmtavb~RM3uBcfLz-LZF7iPYWaCZCFjpjVNC2gHSev~DYQGgkvr330Pg3fYQ4m1GMRVEZ~vH2Er7Njen50-eGk-eqKq4zxAcANdZOaPvzzdlXG~cyeWBJ2-W04SSdHXMrXEQByJGI-teMgsaBSpF~XnzKxaUBT2tqbZoPfS0M0OlW00eEuMhOQG8-Aerm1Hg3Tn7rdYUmxRHbbGSC4dtIuA9sFYkK22TVJp8lKloEQtzJrRYYS7EXIKwtdZz66MYQrfWlCIMSyHE1tg__"
+                src="https://d3l4smlx4vuygm.cloudfront.net/lock.png"
                 alt="Safety"
                 width={100}
                 height={100}
@@ -146,7 +166,7 @@ const Page: React.FC = () => {
             </div>
             <div className="border border-purple-600 rounded-lg p-6 text-center flex flex-col items-center hover:shadow-lg transition duration-300 w-full md:w-1/3 max-w-xs mx-auto md:mx-0">
               <Image
-                src="https://s3-alpha-sig.figma.com/img/320b/7287/d6a0c0fc623a490704ef4e40ee3802a9?Expires=1722211200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=po4LqjD4nRwcH-2myXqJi~ub1WGHq4VJh15IVFO-WQiQlO8NGPA-TNHp0Z2z9W1C1sa-00V6nzMXwkp8-TVIkrglIVSywL22zoMBzDdJos69w5Z-7iYoBaPdMvv7WCAdpeSHmgYJogDMwpzwg0lrcm22MX0vXQI~or~gLuG83Q6TzpIH8KbCXvNgExBR21tZbIDoPZJFcCOPbY020g0KkJTGquDXc8oo2ww0g4US4JX3OJALFrfJRdFzYPm6kG0pYvtCeJ2A7fWSeQ5hWEEOewApqzVsI~8ewBD1gveWMSJ5I9F0nfDqC1qJDzYJ-McHDNVCqYjr8WoQeQAcsc4suw__"
+                src="https://d3l4smlx4vuygm.cloudfront.net/feather.png"
                 alt="Convenience"
                 width={100}
                 height={100}
